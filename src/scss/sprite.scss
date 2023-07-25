@@ -1,0 +1,31 @@
+.ttts-sprite {
+    width: 32px;
+    height: 32px;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+}
+
+.ttts-sprite-config {
+    @extend .ttts-sprite;
+    background-image: url('#{$img-dir}config.png');
+}
+
+.ttts-sprite-next {
+    @extend .ttts-sprite;
+    background-image: url('#{$img-dir}next.png');
+}
+
+.ttts-sprite-pause {
+    @extend .ttts-sprite;
+    background-image: url('#{$img-dir}pause.png');
+}
+
+.ttts-sprite-prev {
+    @extend .ttts-sprite-next;
+    transform: scale(-1, -1);
+}
+
+.ttts-sprite-play {
+    @extend .ttts-sprite;
+    background-image: url('#{$img-dir}play.png');
+}

@@ -44,17 +44,14 @@ class TwineTextToSpeech {
      * initialize the module, only run once
      */
     init() {
-        this.importConfig();
-        this.getParams();
-        this.initHtml();
-        this.playBtn = document.querySelector('#ttts-play');
-        this.nextBtn = document.querySelector('#ttts-next');
-        this.prevBtn = document.querySelector('#ttts-prev');
-        this.configBtn = document.querySelector('#ttts-config');
-        this.configContainer = document.querySelector('#ttts-config-container');
-        this.setVoiceConfig();
-        this.initEvents();
-        this.onLoaded();
+        this.loadSynth().then(() => {
+            this.importConfig();
+            this.getParams();
+            this.initHtml();
+            this.setVoiceConfig();
+            this.initEvents();
+            this.onLoaded();
+        });
     }
 
     /**
@@ -132,6 +129,12 @@ class TwineTextToSpeech {
         //output to page
         document.querySelector('body').insertAdjacentHTML('beforeend', configHtml);
         document.querySelector('body').appendChild(buttonContainer);
+
+        this.playBtn = document.querySelector('#ttts-play');
+        this.nextBtn = document.querySelector('#ttts-next');
+        this.prevBtn = document.querySelector('#ttts-prev');
+        this.configBtn = document.querySelector('#ttts-config');
+        this.configContainer = document.querySelector('#ttts-config-container');
     }
 
     /**
@@ -229,6 +232,20 @@ class TwineTextToSpeech {
         });
     }
 
+    loadSynth() {
+        return new Promise(function (resolve, reject) {
+            let synth = window.speechSynthesis;
+            let id;
+
+            id = setInterval(() => {
+                if (synth.getVoices().length > 0) {
+                    resolve();
+                    clearInterval(id);
+                }
+            }, 10);
+        });
+    }
+
     /**
      * Get the latest version of the story content.
      * Add an event to check for story navigation interactions
@@ -277,6 +294,7 @@ class TwineTextToSpeech {
         this.voices = this.synth.getVoices();
         //console.log('VOICE | ', this.voice);
         //console.log('VOICES | ', this.voices);
+        //console.log('this.synth.getVoices()', window.speechSynthesis.getVoices());
         if (this.voices.length > 0) {
             this.voices.map((item, key) => {
                 const row = document.createElement('div');
@@ -346,7 +364,7 @@ class TwineTextToSpeech {
      * format the passages to be more readable, split text into an array of lines and add each to the play queue
      */
     processPassages() {
-        this.getPassages();
+        //this.getPassages();
 
         const rawText = document.createElement('div');
 
@@ -361,30 +379,32 @@ class TwineTextToSpeech {
         rawText.innerHTML = rawText.innerHTML.replaceAll(/\n\s*\n/g, '\n'); //double to single line breaks
         rawText.innerHTML = rawText.innerHTML.replaceAll(/\t/g, ' '); //tabs to spaces
         rawText.innerHTML = rawText.innerHTML.replaceAll(/ +(?= )/g, ' '); //double to single spaces
-        console.log('CONTENT | ', rawText.innerHTML);
+        //console.log('CONTENT | ', rawText.innerHTML);
 
         const duplicate = [];
         const lines = rawText.innerHTML.trim().match(/[^\r\n]+/g);
-        console.log('LINES | ', lines);
+        //console.log('LINES | ', lines);
 
-        lines.map((line) => {
-            const lineFormatted = document.createElement('div');
-            lineFormatted.innerHTML = line;
-            let text = lineFormatted.innerText;
+        if (lines !== null && lines.length > 0) {
+            lines.map((line) => {
+                const lineFormatted = document.createElement('div');
+                lineFormatted.innerHTML = line;
+                let text = lineFormatted.innerText;
 
-            text = text.replaceAll('.', ',');
-            text = text.replaceAll(',,', ',');
+                text = text.replaceAll('.', ',');
+                text = text.replaceAll(',,', ',');
 
-            if (text !== '' && !duplicate.includes(text)) {
-                duplicate.push(text);
-                this.queue.push({
-                    text: text,
-                    pitch: this.pitch,
-                    voice: this.voice,
-                    orig: line,
-                });
-            }
-        });
+                if (text !== '' && !duplicate.includes(text)) {
+                    duplicate.push(text);
+                    this.queue.push({
+                        text: text,
+                        pitch: this.pitch,
+                        voice: this.voice,
+                        orig: line,
+                    });
+                }
+            });
+        }
     }
 
     /**

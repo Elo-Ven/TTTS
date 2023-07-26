@@ -13,6 +13,8 @@ Your web browser already has text-to-speech tools built into it right now. Your 
 
 The mod can also be added to a Twine game by anyone, dev or player.
 
+![Screenshot](demo/screenshots/1.png 'Screenshot')
+
 ## Installation
 
 ### 1 - Download
@@ -63,6 +65,51 @@ And paste it just before the `</body>` tag in the html file you just opened
 </html>
 ```
 
+## Game Profiles
+
+### What are Game Profiles
+
+These are custom settings that help TTTS work better with specific games so it is highly recommended you create or import a game profile when using TTTS.
+
+### Where to find pre-made profiles
+
+There are some pre-made game profiles available for download.
+
+You can download the pre-made profiles from here: \
+https://github.com/Elo-Ven/TTTS/tree/main/dist/profile
+
+### How to import an existing profile
+
+To import a pre-made profile, download the profile file and rename it to `ttts-config.js`. Then place it in the ttts folder, overwriting the existing copy of `ttts-config.js`.
+
+Then open your game and the new settings will be automatically applied.
+
+### How to create a new profile
+
+Open `ttts-config.js` in a suitable text editor and then remove the `//` from the beginning of the line to enable an option. Then change the value to have it always applied.
+
+In the case of Pitch, Rate and Voice, these options act as default settings and can be overridden in-game using the settings popup.
+
+```
+var tttsConfig = {
+    //container: '#passages',
+    //pitch: 1,
+    //rate: 1.0,
+    //silence: ['.link-internal'],
+    //trigger: ['.link-internal'],
+    //voice: 0,
+    //volume: 1,
+};
+```
+
+### How to silence non-story text
+
+Some games have additional menus and navigation that we would rather are not read every time a passage loads. We can exclude them from being spoken using the `silence` option.
+
+Use your web browsers 'Element Inspector' to find the id or class name of an element that encloses the text you want to exclude. Then add a JS selector to the silence array in `ttts-config.js` and then refresh the page.
+
+This method isn't always possible, it depends a lot on the game and what you want to silence. It also requires some basic knowledge of html.
+
 ## Default Options
 
 | Option Name | Type    | Default              | Description                                                                                                    |
@@ -73,31 +120,6 @@ And paste it just before the `</body>` tag in the html file you just opened
 | trigger     | array   | `['.link-internal']` | list of css style selectors for elements that should trigger TTTS to autoplay (e.g. passage navigation)        |
 | voice       | integer | `0`                  | the array key of the active SpeechSynthesisUtterance voice. full array in `window.speechSynthesis.getVoices()` |
 | volume      | float   | `1`                  | value is passed directly to SpeechSynthesisUtterance.volume                                                    |
-
-### Overriding Default Params
-
-Open `ttts-config.js` in a suitable text editor and then remove the // from the stat of the line to enable an option. Then change the value to have it always applied. This tool is primarily intended for sharing settings profiles across games.
-
-Please note that if you change the option in-game, using the TTTS settings popup, that value will be used instead of the value in `ttts-config.js`
-
-```
-var tttsConfig = {
-    //pitch: 1,
-    //rate: 1.0,
-    //silence: ['.link-internal'],
-    //trigger: ['.link-internal'],
-    //voice: 0,
-    //volume: 1,
-};
-```
-
-### How To Silence Non-Story Text
-
-Some games have additional menus and navigation that we would rather are not read every time a passage loads.
-
-We can exclude them from being spoken using the `silence` option. Use your web browsers 'Element Inspector' to find the id or class name of an element that encloses the text you want to exclude. Add a JS selector to the silence array in `ttts-config.js` and then refresh the page.
-
-This method isn't always possible, it depends a lot on the game and what you want to `silence`. It also requires some basic knowledge of html so if you create a config file, please share it online with the rest of community so that they can download it and replace their copy with the improved version for that game.
 
 ## FAQ (a.k.a what i think you might have questions about)
 
@@ -113,8 +135,9 @@ Tested and working with Sugarcube and Harlowe based games.
 
 ### Its acting weird
 
-Yeah... depending on how the game dev has set up their passages it's really difficult to predict what text structure or names will be used. The `trigger` and `silence` options can help or completely fix issues, but sometimes you just have to put up with some inconvenience, soz...
+Yeah... depending on how the game developer has set up their passages it's really difficult to predict what text structure will be used. The `trigger` and `silence` options can help or completely fix issues, but sometimes you just have to live with some inconvenience, soz...
 
 ## Thank You For Reading
 
-"It doesn't stop being magic just because you know how it works." - Terry Pratchett / The Wee Free Men
+"**It doesn't stop being magic just because you know how it works.**"\
+_Terry Pratchett / The Wee Free Men_

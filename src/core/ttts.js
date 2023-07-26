@@ -13,13 +13,23 @@
 
 class TwineTextToSpeech {
     // Speech Synthesis options
-    container = '#passages';
+    container = '#passages, tw-passage';
     volume = 1;
     pitch = 1;
     rate = 1;
     voice = 0;
-    silence = ['.link-internal'];
-    trigger = ['.link-internal'];
+    silence = [
+        '.link-internal',
+        'tw-link',
+        'script',
+        'select',
+        'textarea',
+        'img',
+        'svg',
+        'object',
+        'iframe',
+    ];
+    trigger = ['.link-internal', 'tw-link'];
 
     // Speech Synthesis objects
     voices = [];
@@ -40,10 +50,14 @@ class TwineTextToSpeech {
     configBtn;
     configContainer;
 
+    //other
+    framework = '';
+
     /**
      * initialize the module, only run once
      */
     init() {
+        console.log('TTTS | Running setup');
         this.loadSynth().then(() => {
             this.importConfig();
             this.getParams();
@@ -60,8 +74,17 @@ class TwineTextToSpeech {
     importConfig() {
         //set default config params if supplied
         if (typeof tttsConfig !== 'undefined') {
+            const imported = [];
             for (const key in tttsConfig) {
-                this[key] = tttsConfig[key];
+                if (key === 'silence' || key === 'tigger') {
+                    this[key] = this[key].concat(tttsConfig[key]);
+                } else {
+                    this[key] = tttsConfig[key];
+                }
+                imported.push(key);
+            }
+            if (imported.length > 0) {
+                console.log('TTTS | Imported profile with ' + imported.join(','));
             }
         }
 
@@ -252,7 +275,8 @@ class TwineTextToSpeech {
      */
     getPassages() {
         this.passagesContainer = document.querySelector(this.container);
-        if (this.passagesContainer) {
+        if (this.passagesContainer && this.passagesContainer.getAttribute('listening') !== '1') {
+            this.passagesContainer.setAttribute('listening', '1');
             this.passagesContainer.addEventListener('mouseup', (e) => {
                 let valid = true;
                 this.trigger.map((selector) => {
@@ -334,6 +358,13 @@ class TwineTextToSpeech {
             this.getPassages();
             if (!this.passagesContainer) {
                 this.onLoaded();
+            } else {
+                if (typeof document.querySelector('#story > #passages') !== 'undefined') {
+                    this.framework = 'sugarcube';
+                } else if (typeof document.querySelector('tw-story > tw-passage') !== 'undefined') {
+                    this.framework = 'harlowe';
+                }
+                console.log('TTTS | Setup complete');
             }
         }, 500);
     }
@@ -364,7 +395,7 @@ class TwineTextToSpeech {
      * format the passages to be more readable, split text into an array of lines and add each to the play queue
      */
     processPassages() {
-        //this.getPassages();
+        this.getPassages();
 
         const rawText = document.createElement('div');
 
@@ -540,4 +571,6 @@ if ('speechSynthesis' in window) {
             ttts.init();
         };
     }
+} else {
+    console.log('TTTS | Failed to load, speechSynthesis is not available in your browser');
 }

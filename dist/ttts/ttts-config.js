@@ -10,10 +10,10 @@
  */
 
 var tttsConfig = {
-    //container: '#passages',
+    //container: '#passages, tw-passage',
     //pitch: 1,
     //rate: 1.0,
-    //silence: ['.link-internal', '.passageHeader'],
+    //silence: ['.link-internal'],
     //trigger: ['.link-internal'],
     //voice: 0,
     //volume: 1,

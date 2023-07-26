@@ -15,6 +15,30 @@ The mod can also be added to a Twine game by anyone, dev or player.
 
 ![Screenshot](demo/screenshots/1.png 'Screenshot')
 
+## Table of Contents
+
+-   [TTTS - Twine Text To Speech](#ttts---twine-text-to-speech)
+    -   [Summary](#summary)
+    -   [Table of Contents](#table-of-contents)
+    -   [Installation](#installation)
+        -   [1 - Download](#1---download)
+        -   [2 - Locate](#2---locate)
+        -   [3 - Unpack](#3---unpack)
+        -   [4A - Automatic Import (recommended)](#4a---automatic-import-recommended)
+        -   [4B - Manual Import](#4b---manual-import)
+        -   [Updating](#updating)
+    -   [Game Profiles](#game-profiles)
+        -   [What are Game Profiles](#what-are-game-profiles)
+        -   [Where to find pre-made profiles](#where-to-find-pre-made-profiles)
+        -   [How to import an existing profile](#how-to-import-an-existing-profile)
+        -   [How to create a new profile](#how-to-create-a-new-profile)
+        -   [How to silence non-story text](#how-to-silence-non-story-text)
+    -   [Default Options](#default-options)
+    -   [FAQ (a.k.a what i think you might have questions about)](#faq-aka-what-i-think-you-might-have-questions-about)
+        -   [Compatibility](#compatibility)
+        -   [Its acting weird](#its-acting-weird)
+    -   [Thank You For Reading](#thank-you-for-reading)
+
 ## Installation
 
 ### 1 - Download
@@ -31,17 +55,13 @@ Find the game directory for the game you want to mod. This is the folder where t
 Copy the 'ttts' directory into the game directory, next to the games .html. (go to the demo directory to see an example) \
 https://github.com/Elo-Ven/TTTS/tree/main/demo
 
-### 4 - Import
-
-Import using either the automatic or manual method
-
-#### 4A - Automatic Import (recommended)
+### 4A - Automatic Import (recommended)
 
 Run `install.bat` (_require access to Python_) and when asked, enter the filename of your games main html file (the one you open the game with). The original file will not be altered, instead a new copy of that file will be created that ends `-mod.html`.
 
 All done, the game is now ready to play. Open the newly created file to play the game with TTTS enabled.
 
-#### 4B - Manual Import
+### 4B - Manual Import
 
 Alternatively, you can manually import TTTS. \
 <b>You don't need to do this if you successfully did 4A</b>
@@ -64,6 +84,14 @@ And paste it just before the `</body>` tag in the html file you just opened
 </body>
 </html>
 ```
+
+### Updating
+
+Follow steps 1 and 2 of the install guide and then come back here.
+
+Open the `ttts` folder in your download and find the folder named `core`. Copy this into your games `ttts` folder and overwrite everything.
+
+Enjoy a mandatory moment of satisfaction and then thats the update complete.
 
 ## Game Profiles
 
@@ -114,9 +142,10 @@ This method isn't always possible, it depends a lot on the game and what you wan
 
 | Option Name | Type    | Default              | Description                                                                                                    |
 | ----------- | ------- | -------------------- | -------------------------------------------------------------------------------------------------------------- |
-| ignores     | array   | `['.link-internal']` | list of css style selectors for elements that should not be included in the play queue                         |
+| container   | string  | `'#passages'`        | the id or other JS selector of element containing the story text                                               |
 | pitch       | float   | `1`                  | value is passed directly to SpeechSynthesisUtterance.pitch                                                     |
 | rate        | float   | `1`                  | value is passed directly to SpeechSynthesisUtterance.rate                                                      |
+| silence     | array   | `['.link-internal']` | list of css style selectors for elements that should not be included in the play queue                         |
 | trigger     | array   | `['.link-internal']` | list of css style selectors for elements that should trigger TTTS to autoplay (e.g. passage navigation)        |
 | voice       | integer | `0`                  | the array key of the active SpeechSynthesisUtterance voice. full array in `window.speechSynthesis.getVoices()` |
 | volume      | float   | `1`                  | value is passed directly to SpeechSynthesisUtterance.volume                                                    |

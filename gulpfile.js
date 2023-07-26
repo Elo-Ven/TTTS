@@ -45,10 +45,10 @@ gulp.task('support', function () {
 
 gulp.task('media', function () {
     return gulp
-        .src('src/media/**')
+        .src('src/core/media/**')
         .pipe(plumber())
-        .pipe(gulp.dest('dist/ttts/media'))
-        .pipe(gulp.dest('demo/ttts/media'));
+        .pipe(gulp.dest('dist/ttts/core/media'))
+        .pipe(gulp.dest('demo/ttts/core/media'));
 });
 
 gulp.task('zip', function () {

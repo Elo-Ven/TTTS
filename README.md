@@ -9,9 +9,9 @@ https://creativecommons.org/licenses/by/4.0/
 
 If you are that sort of person that prefers listening to audiobooks over reading books, this mod will make Twine story games much more enjoyable for you.
 
-Your web browser already has text-to-speech tools built into it right now. Your Twine game just isn't using them. This mod add a small control panel where you can play the story text in the game via those built-in tools.
+Your web browser already has text-to-speech tools built into it right now. Your Twine game just isn't using them. This mod adds a small control panel to the game that hooks into those tools, letting you play the game, just as before, but now with voice-overs.
 
-The mod can also be added to a Twine game by anyone, dev or player.
+The mod is very simple to install and can also be added by anyone, developer or player.
 
 ![Screenshot](demo/screenshots/1.png 'Screenshot')
 

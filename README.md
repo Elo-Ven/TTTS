@@ -2,7 +2,8 @@
 
 Version: 2.1.0
 
-Licence: Creative Common Attribution 4.0 International (https://creativecommons.org/licenses/by/4.0/)
+Licence: Creative Common Attribution 4.0 International \
+https://creativecommons.org/licenses/by/4.0/
 
 ## Summary
 
@@ -16,27 +17,41 @@ The mod can also be added to a Twine game by anyone, dev or player.
 
 ### 1 - Download
 
-Download from the project GitHub page
+Download the zip file with the latest version from the project GitHub page \
 https://github.com/Elo-Ven/TTTS/raw/main/dist/ttts.zip
 
 ### 2 - Locate
 
-Find the game directory for the game you want to mod (it's the directory that you games main .hmtl file is, the one you use to open the game)
+Find the game directory for the game you want to mod. This is the folder where the .html file is that you use to run the game.
 
 ### 3 - Unpack
 
-Copy the 'mod' directory in your download to the game directory.
+Copy the 'ttts' directory into the game directory, next to the games .html. (go to the demo directory to see an example) \
+https://github.com/Elo-Ven/TTTS/tree/main/demo
 
 ### 4 - Import
 
-Open your games `game_name.html` file in a text editor such as Notepad++ and navigate to the very end of the file (this can cause a small delay depending on the size of the html file).
+Import using either the automatic or manual method
 
-If you don't already have a text editor that works well with html files, you will need to get one. A simple and reputable one is Notepadd++ (https://notepad-plus-plus.org/downloads/)
+#### 4A - Automatic Import (recommended)
+
+Run `install.bat` (_require access to Python_) and when asked, enter the filename of your games main html file (the one you open the game with). The original file will not be altered, instead a new copy of that file will be created that ends `-mod.html`.
+
+All done, the game is now ready to play. Open the newly created file to play the game with TTTS enabled.
+
+#### 4B - Manual Import
+
+Alternatively, you can manually import TTTS. \
+<b>You don't need to do this if you successfully did 4A</b>
+
+Find your games main html file and make a backup copy of it.
+
+Now, open the file in a suitable text editor such as Notepad++ and navigate to the very end of the file (there maybe a delay depending on the size of the html file).
 
 Copy this line of code
 
 ```
-<script src="ttts/ttts.js"></script>
+<script src="ttts/ttts-config.js"></script>
 ```
 
 And paste it just before the `</body>` tag in the html file you just opened
@@ -48,44 +63,39 @@ And paste it just before the `</body>` tag in the html file you just opened
 </html>
 ```
 
-#### 4 - optional
+## Default Options
 
-In step 3, use `ttts-config.js` instead of `ttts.js` to set a permanent default
-
-## Default Params
-
-| Option Name | Type    | Default Value        | Description                                                                                                    |
+| Option Name | Type    | Default              | Description                                                                                                    |
 | ----------- | ------- | -------------------- | -------------------------------------------------------------------------------------------------------------- |
 | ignores     | array   | `['.link-internal']` | list of css style selectors for elements that should not be included in the play queue                         |
 | pitch       | float   | `1`                  | value is passed directly to SpeechSynthesisUtterance.pitch                                                     |
-| rate        | float   |                      | value is passed directly to SpeechSynthesisUtterance.rate                                                      |
+| rate        | float   | `1`                  | value is passed directly to SpeechSynthesisUtterance.rate                                                      |
 | trigger     | array   | `['.link-internal']` | list of css style selectors for elements that should trigger TTTS to autoplay (e.g. passage navigation)        |
-| volume      | float   | `1`                  | value is passed directly to SpeechSynthesisUtterance.volume                                                    |
 | voice       | integer | `0`                  | the array key of the active SpeechSynthesisUtterance voice. full array in `window.speechSynthesis.getVoices()` |
+| volume      | float   | `1`                  | value is passed directly to SpeechSynthesisUtterance.volume                                                    |
 
 ### Overriding Default Params
 
-Follow the optional step under Import in the installation guide and then open `ttts-config.js` in a suitable text editor.
+Open `ttts-config.js` in a suitable text editor and then remove the // from the stat of the line to enable an option. Then change the value to have it always applied. This tool is primarily intended for sharing settings profiles across games.
+
+Please note that if you change the option in-game, using the TTTS settings popup, that value will be used instead of the value in `ttts-config.js`
 
 ```
 var tttsConfig = {
-    //volume: 1,
     //pitch: 1,
-    rate: 1.5,
-    voice: 15,
-    ignores: [
-        '.link-internal',
-        '#wardrobe',
-        'label',
-    ],
+    //rate: 1.0,
+    //silence: ['.link-internal'],
+    //trigger: ['.link-internal'],
+    //voice: 0,
+    //volume: 1,
 };
 ```
 
-### Silence Non-Story Text
+### How To Silence Non-Story Text
 
-Some games have additional menus and navigation that you would rather they are not read every time the page loads.
+Some games have additional menus and navigation that we would rather are not read every time a passage loads.
 
-We can exclude them from being spoken using the `silence` option. Use your web browsers 'Element Inspector' to find the id or class name of an element that encloses the text you want to exclude. Add a css style selector to the silence array in `ttts-config.js` and then refresh the page.
+We can exclude them from being spoken using the `silence` option. Use your web browsers 'Element Inspector' to find the id or class name of an element that encloses the text you want to exclude. Add a JS selector to the silence array in `ttts-config.js` and then refresh the page.
 
 This method isn't always possible, it depends a lot on the game and what you want to `silence`. It also requires some basic knowledge of html so if you create a config file, please share it online with the rest of community so that they can download it and replace their copy with the improved version for that game.
 
@@ -103,7 +113,7 @@ Tested and working with Sugarcube and Harlowe based games.
 
 ### Its acting weird
 
-Yeah... depending on how the game dev has set up their passages it's really difficult to predict what text structure or names will be used. The `trigger` and `ignore` options can help or completely fix issues, but sometimes you just have to put up with some inconvenience, soz...
+Yeah... depending on how the game dev has set up their passages it's really difficult to predict what text structure or names will be used. The `trigger` and `silence` options can help or completely fix issues, but sometimes you just have to put up with some inconvenience, soz...
 
 ## Thank You For Reading
 

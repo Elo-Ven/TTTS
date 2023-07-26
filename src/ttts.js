@@ -17,7 +17,7 @@ class TwineTextToSpeech {
     pitch = 1;
     rate = 1;
     voice = 0;
-    ignores = ['.link-internal'];
+    silence = ['.link-internal'];
     trigger = ['.link-internal'];
 
     // Speech Synthesis objects
@@ -352,7 +352,7 @@ class TwineTextToSpeech {
         const rawText = document.createElement('div');
         rawText.innerHTML = this.passagesContainer.innerHTML;
 
-        this.ignores.map((ignore) => {
+        this.silence.map((ignore) => {
             rawText.querySelectorAll(ignore).forEach((el) => el.remove());
         });
 

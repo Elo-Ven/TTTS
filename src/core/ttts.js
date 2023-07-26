@@ -13,6 +13,7 @@
 
 class TwineTextToSpeech {
     // Speech Synthesis options
+    container = '#passages';
     volume = 1;
     pitch = 1;
     rate = 1;
@@ -68,7 +69,7 @@ class TwineTextToSpeech {
         }
 
         //import the css file
-        const css = '<link rel="stylesheet" type="text/css" href="ttts/ttts-style.css" />';
+        const css = '<link rel="stylesheet" type="text/css" href="ttts/core/ttts-style.css" />';
         document.querySelector('head').insertAdjacentHTML('beforeend', css);
     }
 
@@ -233,13 +234,11 @@ class TwineTextToSpeech {
      * Add an event to check for story navigation interactions
      */
     getPassages() {
-        this.passagesContainer = document.querySelector('#passages');
+        this.passagesContainer = document.querySelector(this.container);
         if (this.passagesContainer) {
-            console.log('passagesContainer', this.passagesContainer.innerHTML);
             this.passagesContainer.addEventListener('mouseup', (e) => {
                 let valid = true;
                 this.trigger.map((selector) => {
-                    console.log('getPassages', selector, valid, e.target.closest(selector));
                     if (valid && e.target.closest(selector)) {
                         valid = false;
                         this.onPlay();
@@ -254,7 +253,7 @@ class TwineTextToSpeech {
      */
     getParam(id) {
         var stored = localStorage.getItem('ttts-' + id);
-        if (typeof stored !== 'undefined') {
+        if (typeof stored !== 'undefined' && stored !== null) {
             this[id] = stored;
         }
     }
@@ -347,9 +346,10 @@ class TwineTextToSpeech {
      * format the passages to be more readable, split text into an array of lines and add each to the play queue
      */
     processPassages() {
-        //this.getPassages();
+        this.getPassages();
 
         const rawText = document.createElement('div');
+
         rawText.innerHTML = this.passagesContainer.innerHTML;
 
         this.silence.map((ignore) => {
@@ -361,7 +361,7 @@ class TwineTextToSpeech {
         rawText.innerHTML = rawText.innerHTML.replaceAll(/\n\s*\n/g, '\n'); //double to single line breaks
         rawText.innerHTML = rawText.innerHTML.replaceAll(/\t/g, ' '); //tabs to spaces
         rawText.innerHTML = rawText.innerHTML.replaceAll(/ +(?= )/g, ' '); //double to single spaces
-        //console.log('CONTENT | ', rawText.innerHTML);
+        console.log('CONTENT | ', rawText.innerHTML);
 
         const duplicate = [];
         const lines = rawText.innerHTML.trim().match(/[^\r\n]+/g);
@@ -492,7 +492,6 @@ class TwineTextToSpeech {
             .querySelectorAll('.ttts-highlight')
             .forEach((el) => el.classList.remove('ttts-highlight'));
 
-        console.log('msg', msg);
         const words = msg.split(' ');
         let tmp = this.passagesContainer.innerHTML;
 

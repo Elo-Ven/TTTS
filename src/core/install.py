@@ -18,6 +18,7 @@ source = "..\example.html"
 output = "..\example-mod.html"
 ext1 = ".html"
 ext2 = "-mod.html"
+gameDir = "../"
 
 # f = open(source,"rb")
 # detector = UniversalDetector()
@@ -28,7 +29,7 @@ ext2 = "-mod.html"
 # print(detector.result)
 
 # Find available html files
-directory = os.fsencode("../")
+directory = os.fsencode(gameDir)
 files = []
 
 for file in os.listdir(directory):
@@ -54,7 +55,7 @@ else:
     srcName = input("The games html filename:")
     
 #set the modded game filename
-source = "..\\" + srcName
+source = gameDir + srcName
 output = source.replace(ext1, ext2)
 
 #check if game file exists

@@ -18,6 +18,7 @@ source = "..\example.html"
 output = "..\example-mod.html"
 ext1 = ".html"
 ext2 = "-mod.html"
+gameDir = "../"
 
 # f = open(source,"rb")
 # detector = UniversalDetector()
@@ -27,9 +28,8 @@ ext2 = "-mod.html"
 # detector.close()
 # print(detector.result)
 
-directory_in_str = "../"
-
-directory = os.fsencode(directory_in_str)
+# Find available html files
+directory = os.fsencode(gameDir)
 files = []
 
 for file in os.listdir(directory):
@@ -39,7 +39,8 @@ for file in os.listdir(directory):
          continue
      else:
          continue
-     
+
+#ask which file to use, unless there is only 1 html file
 fileCount = len(files)
 if fileCount > 1:
     for i, filename in enumerate(files):
@@ -53,10 +54,11 @@ else:
     print("Enter the name of the main html file. This will often be mygame.html")
     srcName = input("The games html filename:")
     
-
-source = "..\\" + srcName
+#set the modded game filename
+source = gameDir + srcName
 output = source.replace(ext1, ext2)
 
+#check if game file exists
 print("")
 print("Fetching game file...")
 if os.path.isfile(source):
@@ -69,20 +71,23 @@ else:
     print("Installation failed...")
     quit()
 
-
+#read the game file
 f = open(source,"r",encoding='utf-8')
 filedata = f.read()
 f.close()
 
+#append a script tag that will run TTTS when the game runs
 print("")
 print("Importing TTTS...")
 newdata = filedata.replace(oldStr,newStr)
 
+#save the modded version of the game to a new file and leave the main file intact
 print("Saving modded game file...")
 f = open(output,'w',encoding='utf-8')
 f.write(newdata)
 f.close()
 
+#extra info
 print("")
 print("Installation complete...")
 print("")

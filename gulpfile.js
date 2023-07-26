@@ -13,27 +13,27 @@ sass.compiler = require('node-sass');
 
 gulp.task('css', function () {
     return gulp
-        .src('src/ttts-style.scss')
+        .src('src/core/*.scss')
         .pipe(plumber())
         .pipe(sass())
         .pipe(autoprefixer())
         .pipe(minifycss())
-        .pipe(gulp.dest('dist/ttts'))
-        .pipe(gulp.dest('demo/ttts'));
+        .pipe(gulp.dest('dist/ttts/core'))
+        .pipe(gulp.dest('demo/ttts/core'));
 });
 
 gulp.task('js', function () {
     return gulp
-        .src('src/*.js')
+        .src('src/core/*.js')
         .pipe(plumber())
         .pipe(uglify())
-        .pipe(gulp.dest('dist/ttts'))
-        .pipe(gulp.dest('demo/ttts'));
+        .pipe(gulp.dest('dist/ttts/core'))
+        .pipe(gulp.dest('demo/ttts/core'));
 });
 
 gulp.task('support', function () {
     return gulp
-        .src(['README.md', 'src/install.bat', 'src/install.py'])
+        .src(['*.md', 'src/**/*.bat', 'src/**/*.py', 'src/*.js'])
         .pipe(plumber())
         .pipe(gulp.dest('dist/ttts'))
         .pipe(gulp.dest('demo/ttts'));
@@ -56,5 +56,5 @@ gulp.task('export', gulp.series('css', 'js', 'support', 'media', 'zip'));
 gulp.task('watch', function () {
     gulp.watch('src/**/*.scss', gulp.series('css'));
     gulp.watch('src/**/*.js', gulp.series('js'));
-    gulp.watch(['README.md', 'src/install.bat'], gulp.series('support'));
+    gulp.watch(['*.md', 'src/**/*.bat', 'src/**/*.py', 'src/*.js'], gulp.series('support'));
 });

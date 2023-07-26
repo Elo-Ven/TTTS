@@ -1,7 +1,7 @@
 @ECHO OFF
 setlocal enableDelayedExpansion
 
-python install.py
+python core/install.py
 
 endlocal
 exit /b

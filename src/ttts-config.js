@@ -10,6 +10,7 @@
  */
 
 var tttsConfig = {
+    //container: '#passages',
     //pitch: 1,
     //rate: 1.0,
     //silence: ['.link-internal', '.passageHeader'],
@@ -20,7 +21,7 @@ var tttsConfig = {
 
 window.onload = function () {
     const config = document.createElement('script');
-    config.src = 'ttts/ttts.js';
+    config.src = 'ttts/core/ttts.js';
     config.type = 'text/javascript';
     document.querySelector('body').appendChild(config);
 };

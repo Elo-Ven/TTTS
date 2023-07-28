@@ -27,6 +27,10 @@ The mod is very simple to install and can also be added by anyone, developer or 
         -   [4A - Automatic Import (recommended)](#4a---automatic-import-recommended)
         -   [4B - Manual Import](#4b---manual-import)
         -   [Updating](#updating)
+    -   [Compatibility](#compatibility)
+        -   [System](#system)
+        -   [Twine](#twine)
+        -   [Games](#games)
     -   [Game Profiles](#game-profiles)
         -   [What are Game Profiles](#what-are-game-profiles)
         -   [Where to find pre-made profiles](#where-to-find-pre-made-profiles)
@@ -35,7 +39,6 @@ The mod is very simple to install and can also be added by anyone, developer or 
         -   [How to silence non-story text](#how-to-silence-non-story-text)
     -   [Default Options](#default-options)
     -   [FAQ (a.k.a what i think you might have questions about)](#faq-aka-what-i-think-you-might-have-questions-about)
-        -   [Compatibility](#compatibility)
         -   [Its acting weird](#its-acting-weird)
     -   [Thank You For Reading](#thank-you-for-reading)
 

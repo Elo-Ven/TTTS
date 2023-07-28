@@ -1,9 +1,7 @@
 # TTTS - Twine Text To Speech
 
-Version: 2.1.0
-
-Licence: Creative Common Attribution 4.0 International \
-https://creativecommons.org/licenses/by/4.0/
+Version: 2.1.0 \
+Licence: MIT
 
 ## Summary
 
@@ -111,18 +109,18 @@ Unknown - other
 
 ### Games
 
-| Game                 | Status     | Profile Needed | Version Tested |
-| -------------------- | ---------- | -------------- | -------------- |
-| A Spell For All      | ⭐         | n/a            | 14.13          |
-| Adam & Gaia 3.0      | ⭐⭐⭐⭐⭐ | No             | 3.0            |
-| College Daze         | ⭐⭐⭐⭐⭐ | No             | .390a          |
-| Degrees of Lewdity   | ⭐⭐⭐⭐   | Yes            | 0.4.1.7        |
-| Female Agent         | ⭐⭐⭐⭐⭐ | Yes            | 118            |
-| Friends of Mine      | ⭐⭐⭐⭐⭐ | No             | 1.2.4          |
-| Incubus City by Wape | ⭐⭐⭐⭐⭐ | Yes            | 1.15.0         |
-| Lost in Laminate     | ⭐⭐⭐⭐⭐ | No             | 10.0e          |
-| The Company          | ⭐⭐⭐     | No             | 5.0            |
-| X-Change-Life        | ⭐⭐⭐⭐   | Yes            | 1.15.0         |
+| Game                 | Compatibility Score | Profile Needed | Version Tested |
+| -------------------- | ------------------- | -------------- | -------------- |
+| A Spell For All      | ⭐                  | n/a            | 14.13          |
+| Adam & Gaia          | ⭐⭐⭐⭐⭐          | No             | 3.0            |
+| College Daze         | ⭐⭐⭐⭐⭐          | No             | .390a          |
+| Degrees of Lewdity   | ⭐⭐⭐⭐            | Yes            | 0.4.1.7        |
+| Female Agent         | ⭐⭐⭐⭐⭐          | Yes            | 118            |
+| Friends of Mine      | ⭐⭐⭐⭐⭐          | No             | 1.2.4          |
+| Incubus City by Wape | ⭐⭐⭐⭐⭐          | Yes            | 1.15.0         |
+| Lost in Laminate     | ⭐⭐⭐⭐⭐          | No             | 10.0e          |
+| The Company          | ⭐⭐⭐              | No             | 5.0            |
+| X-Change-Life        | ⭐⭐⭐⭐            | Yes            | 1.15.0         |
 
 ⭐ Not currently compatible \
 ⭐⭐ Not a good match \

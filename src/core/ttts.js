@@ -13,6 +13,7 @@
 
 class TwineTextToSpeech {
     // Speech Synthesis options
+    debug = false;
     container = '#passages, tw-passage';
     volume = 1;
     pitch = 1;
@@ -21,6 +22,7 @@ class TwineTextToSpeech {
     silence = [
         '.link-internal',
         'tw-link',
+        'tw-sidebar',
         'script',
         'select',
         'textarea',
@@ -28,6 +30,8 @@ class TwineTextToSpeech {
         'svg',
         'object',
         'iframe',
+        '.error-view',
+        '.error',
     ];
     trigger = ['.link-internal', 'tw-link'];
 
@@ -316,9 +320,10 @@ class TwineTextToSpeech {
         }
 
         this.voices = this.synth.getVoices();
-        //console.log('VOICE | ', this.voice);
-        //console.log('VOICES | ', this.voices);
-        //console.log('this.synth.getVoices()', window.speechSynthesis.getVoices());
+        if (this.debug) {
+            console.log('TTTS | VOICE | ', this.voice);
+            console.log('TTTS | VOICES | ', this.voices);
+        }
         if (this.voices.length > 0) {
             this.voices.map((item, key) => {
                 const row = document.createElement('div');
@@ -373,6 +378,9 @@ class TwineTextToSpeech {
      * move to the next Utterance
      */
     onNext() {
+        if (this.debug) {
+            console.log('TTTS | Next');
+        }
         this.synth.cancel();
         this.queueCount++;
         this.run();
@@ -386,6 +394,9 @@ class TwineTextToSpeech {
             this.reset();
         }
         setTimeout(() => {
+            if (this.debug) {
+                console.log('TTTS | Run');
+            }
             this.processPassages();
             this.run();
         }, 500);
@@ -414,7 +425,9 @@ class TwineTextToSpeech {
 
         const duplicate = [];
         const lines = rawText.innerHTML.trim().match(/[^\r\n]+/g);
-        //console.log('LINES | ', lines);
+        if (this.debug) {
+            console.log('TTTS | LINES | ', lines);
+        }
 
         if (lines !== null && lines.length > 0) {
             lines.map((line) => {
@@ -422,7 +435,8 @@ class TwineTextToSpeech {
                 lineFormatted.innerHTML = line;
                 let text = lineFormatted.innerText;
 
-                text = text.replaceAll('.', ',');
+                text = text.replaceAll('..', '.');
+                //text = text.replaceAll('.', ',');
                 text = text.replaceAll(',,', ',');
 
                 if (text !== '' && !duplicate.includes(text)) {
@@ -442,6 +456,9 @@ class TwineTextToSpeech {
      * move to the previously ran Utterance in the queue
      */
     onPrev() {
+        if (this.debug) {
+            console.log('TTTS | Prev');
+        }
         this.synth.cancel();
         this.queueCount--;
         this.run();
@@ -474,6 +491,9 @@ class TwineTextToSpeech {
      * reset back to idle mode
      */
     reset = () => {
+        if (this.debug) {
+            console.log('TTTS | Reset');
+        }
         this.synth.cancel();
         this.queue = [];
         this.queueCount = 0;
@@ -528,6 +548,10 @@ class TwineTextToSpeech {
             inst.queueCountManual = true;
             inst.synth.cancel();
         };
+
+        if (this.debug) {
+            console.log('TTTS | SPEAK | ' + msg.text);
+        }
 
         this.synth.speak(this.utter);
 

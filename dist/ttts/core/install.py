@@ -12,12 +12,12 @@ print("")
 print("Beginning installation...")
 print("")
 
-oldStr = "</body>"
-newStr = "<script src='ttts/ttts-config.js'></script></body>"
+oldStr = "</head>"
+newStr = "<script src='ttts/ttts-config.js'></script></head>"
 source = "..\example.html"
-output = "..\example-mod.html"
+output = "..\example-ttts.html"
 ext1 = ".html"
-ext2 = "-mod.html"
+ext2 = "-ttts.html"
 gameDir = "../"
 
 # f = open(source,"rb")

@@ -93,6 +93,40 @@ Open the `ttts` folder in your download and find the folder named `core`. Copy t
 
 Enjoy a mandatory moment of satisfaction and then thats the update complete.
 
+## Compatibility
+
+### System
+
+Working - Windows \
+Presumed working - Mac, Linux \
+Unknown - other
+
+### Twine
+
+Working - Sugarcube, Harlowe \
+Unknown - other
+
+### Games
+
+| Game                 | Status     | Profile Needed | Version Tested |
+| -------------------- | ---------- | -------------- | -------------- |
+| A Spell For All      | ⭐         | n/a            | 14.13          |
+| Adam & Gaia 3.0      | ⭐⭐⭐⭐⭐ | No             | 3.0            |
+| College Daze         | ⭐⭐⭐⭐⭐ | No             | .390a          |
+| Degrees of Lewdity   | ⭐⭐⭐⭐   | Yes            | 0.4.1.7        |
+| Female Agent         | ⭐⭐⭐⭐⭐ | Yes            | 118            |
+| Friends of Mine      | ⭐⭐⭐⭐⭐ | No             | 1.2.4          |
+| Incubus City by Wape | ⭐⭐⭐⭐⭐ | Yes            | 1.15.0         |
+| Lost in Laminate     | ⭐⭐⭐⭐⭐ | No             | 10.0e          |
+| The Company          | ⭐⭐⭐     | No             | 5.0            |
+| X-Change-Life        | ⭐⭐⭐⭐   | Yes            | 1.15.0         |
+
+⭐ Not currently compatible \
+⭐⭐ Not a good match \
+⭐⭐⭐ Has some issues but worth trying \
+⭐⭐⭐⭐ Not perfect but still works really well \
+⭐⭐⭐⭐⭐Works great
+
 ## Game Profiles
 
 ### What are Game Profiles
@@ -151,16 +185,6 @@ This method isn't always possible, it depends a lot on the game and what you wan
 | volume      | float   | `1`                  | value is passed directly to SpeechSynthesisUtterance.volume                                                    |
 
 ## FAQ (a.k.a what i think you might have questions about)
-
-### Compatibility
-
-#### System
-
-Tested and working on Windows. Not tested on Mac but I can't think of a major reason why it wouldn't work.
-
-#### Twine
-
-Tested and working with Sugarcube and Harlowe based games.
 
 ### Its acting weird
 

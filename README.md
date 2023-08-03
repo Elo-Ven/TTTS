@@ -113,7 +113,7 @@ _Tip: The Edge browser on Windows typically comes with a better selection of hig
 | ------------- | ----------------------- |
 | 0 and Numpad0 | Play / Pause            |
 | Left arrow    | read previous paragraph |
-| right arrow   | read next paragraph     |
+| Right arrow   | read next paragraph     |
 
 # Compatibility
 

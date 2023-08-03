@@ -144,7 +144,7 @@ These are custom settings that help TTTS work better with specific games so it i
 There are some pre-made game profiles available for download.
 
 You can download the pre-made profiles from here: \
-https://github.com/Elo-Ven/TTTS/tree/main/dist/profile
+https://github.com/Elo-Ven/TTTS/tree/main/dist/ttts/profile
 
 ### How to import an existing profile
 

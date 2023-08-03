@@ -19,7 +19,7 @@ gulp.task('css', function () {
         .pipe(autoprefixer())
         .pipe(minifycss())
         .pipe(gulp.dest('dist/ttts/core'))
-        .pipe(gulp.dest('demo/ttts/core'));
+        .pipe(gulp.dest('docs/ttts/core'));
 });
 
 gulp.task('js', function () {
@@ -28,7 +28,7 @@ gulp.task('js', function () {
         .pipe(plumber())
         .pipe(uglify())
         .pipe(gulp.dest('dist/ttts/core'))
-        .pipe(gulp.dest('demo/ttts/core'));
+        .pipe(gulp.dest('docs/ttts/core'));
 });
 
 gulp.task('profile', function () {
@@ -40,7 +40,7 @@ gulp.task('support', function () {
         .src(['src/*.txt', 'src/**/*.bat', 'src/**/*.py', 'src/*.js'])
         .pipe(plumber())
         .pipe(gulp.dest('dist/ttts'))
-        .pipe(gulp.dest('demo/ttts'));
+        .pipe(gulp.dest('docs/ttts'));
 });
 
 gulp.task('media', function () {
@@ -48,7 +48,7 @@ gulp.task('media', function () {
         .src('src/core/media/**')
         .pipe(plumber())
         .pipe(gulp.dest('dist/ttts/core/media'))
-        .pipe(gulp.dest('demo/ttts/core/media'));
+        .pipe(gulp.dest('docs/ttts/core/media'));
 });
 
 gulp.task('zip', function () {

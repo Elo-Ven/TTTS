@@ -3,7 +3,7 @@
 Version: 2.3.0 \
 Licence: MIT
 
-## Summary
+# Summary
 
 If you are that sort of person that prefers listening to audiobooks over reading books, this mod will make Twine story games much more enjoyable for you.
 
@@ -15,57 +15,57 @@ The mod is very simple to install and can also be added by anyone, developer or 
 
 ![Screenshot](docs/screenshots/1.png 'Screenshot')
 
-## Table of Contents
+# Table of contents
 
 -   [TTTS - Twine Text To Speech](#ttts---twine-text-to-speech)
-    -   [Summary](#summary)
-    -   [Table of Contents](#table-of-contents)
-    -   [Installation](#installation)
-        -   [1 - Download](#1---download)
-        -   [2 - Locate](#2---locate)
-        -   [3 - Unpack](#3---unpack)
-        -   [4A - Automatic Import (recommended)](#4a---automatic-import-recommended)
-        -   [4B - Manual Import](#4b---manual-import)
-        -   [Updating](#updating)
-    -   [Compatibility](#compatibility)
-        -   [System](#system)
-        -   [Twine](#twine)
-        -   [Games](#games)
-    -   [Game Profiles](#game-profiles)
-        -   [What are Game Profiles](#what-are-game-profiles)
-        -   [Where to find pre-made profiles](#where-to-find-pre-made-profiles)
-        -   [How to import an existing profile](#how-to-import-an-existing-profile)
-        -   [How to create a new profile](#how-to-create-a-new-profile)
-        -   [How to silence non-story text](#how-to-silence-non-story-text)
-    -   [Default Options](#default-options)
-    -   [Donate](#donate)
-    -   [FAQ (a.k.a what i think you might have questions about)](#faq-aka-what-i-think-you-might-have-questions-about)
-        -   [Its acting weird](#its-acting-weird)
-    -   [Thank You For Reading](#thank-you-for-reading)
+-   [Summary](#summary)
+-   [Table of contents](#table-of-contents)
+-   [Installation](#installation)
+    -   [1 - Download](#1---download)
+    -   [2 - Locate](#2---locate)
+    -   [3 - Unpack](#3---unpack)
+    -   [4A - Automatic Import (recommended)](#4a---automatic-import-recommended)
+    -   [4B - Manual Import](#4b---manual-import)
+    -   [Updating](#updating)
+-   [Usage & Controls](#usage--controls)
+    -   [Adjusting the Voice / Volume / Speed](#adjusting-the-voice--volume--speed)
+    -   [Keyboard Shortcuts](#keyboard-shortcuts)
+-   [Compatibility](#compatibility)
+    -   [System](#system)
+    -   [Twine](#twine)
+    -   [Games](#games)
+-   [Game Profiles](#game-profiles)
+    -   [What are Game Profiles](#what-are-game-profiles)
+    -   [Where to find pre-made profiles](#where-to-find-pre-made-profiles)
+    -   [How to import an existing profile](#how-to-import-an-existing-profile)
+    -   [How to create a new profile](#how-to-create-a-new-profile)
+    -   [How to silence non-story text](#how-to-silence-non-story-text)
+-   [Default Options](#default-options)
+-   [Thank You For Reading](#thank-you-for-reading)
 
-## Installation
+# Installation
 
-### 1 - Download
+## 1 - Download
 
 Download the zip file with the latest version from the project GitHub page \
 https://github.com/Elo-Ven/TTTS/raw/main/dist/ttts.zip
 
-### 2 - Locate
+## 2 - Locate
 
 Find the game directory for the game you want to mod. This is the folder where the .html file is that you use to run the game.
 
-### 3 - Unpack
+## 3 - Unpack
 
 Copy the 'ttts' directory into the game directory, next to the games .html. (go to the docs directory to see an example) \
 https://github.com/Elo-Ven/TTTS/tree/main/docs
 
-### 4A - Automatic Import (recommended)
+## 4A - Automatic Import (recommended)
 
 Run `install.bat` (_require access to Python_) and when asked, enter the filename of your games main html file (the one you open the game with). The original file will not be altered, instead a new copy of that file will be created that ends `-mod.html`.
 
 All done, the game is now ready to play. Open the newly created file to play the game with TTTS enabled.
 
-### 4B - Manual Import
+## 4B - Manual Import
 
 Alternatively, you can manually import TTTS. \
 <b>You don't need to do this if you successfully did 4A</b>
@@ -89,7 +89,7 @@ And paste it just before the `</body>` tag in the html file you just opened
 </html>
 ```
 
-### Updating
+## Updating
 
 Follow steps 1 and 2 of the install guide and then come back here.
 
@@ -97,20 +97,38 @@ Open the `ttts` folder in your download and find the folder named `core`. Copy t
 
 Enjoy a mandatory moment of satisfaction and then thats the update complete.
 
-## Compatibility
+# Usage & Controls
 
-### System
+## Adjusting the Voice / Volume / Speed
+
+Click the cog icon in the player at the top right of the screen. Use the sliders to adjust the Volume, Speed and Pitch of the voice.
+
+To change the voice, click the Sample to hear the various voices you have installed in your browser and then click the Select button for the one you want to you.
+
+_Tip: The Edge browser on Windows typically comes with a better selection of high-quality voices than other mainstream browsers_
+
+## Keyboard Shortcuts
+
+| Key           | Action                  |
+| ------------- | ----------------------- |
+| 0 and Numpad0 | Play / Pause            |
+| Left arrow    | read previous paragraph |
+| right arrow   | read next paragraph     |
+
+# Compatibility
+
+## System
 
 Working - Windows \
 Presumed working - Mac, Linux \
 Unknown - other
 
-### Twine
+## Twine
 
 Working - Sugarcube, Harlowe \
 Unknown - other
 
-### Games
+## Games
 
 | Game                 | Compatibility Score | Profile Needed | Version Tested |
 | -------------------- | ------------------- | -------------- | -------------- |
@@ -133,26 +151,24 @@ Unknown - other
 ⭐⭐⭐⭐ Not perfect but still works really well \
 ⭐⭐⭐⭐⭐Works great
 
-## Game Profiles
+# Game Profiles
 
-### What are Game Profiles
+## What are Game Profiles
 
 These are custom settings that help TTTS work better with specific games so it is highly recommended you create or import a game profile when using TTTS.
 
-### Where to find pre-made profiles
+## Where to find pre-made profiles
 
-There are some pre-made game profiles available for download.
-
-You can download the pre-made profiles from here: \
+There are some pre-made game profiles included in the ttts folder in your download but you can also download them here: \
 https://github.com/Elo-Ven/TTTS/tree/main/dist/ttts/profile
 
-### How to import an existing profile
+## How to import an existing profile
 
-To import a pre-made profile, download the profile file and rename it to `ttts-profile.js`. Then place it in the ttts folder, overwriting the existing copy of `ttts-profile.js`.
+To import a Game Profile, download the profile file and place it in your ttts folder, overwriting the `ttts-profile.js` file already in there.
 
 Then open your game and the new settings will be automatically applied.
 
-### How to create a new profile
+## How to create a new profile
 
 Open `ttts-profile.js` in a suitable text editor and then remove the `//` from the beginning of the line to enable an option. Then change the value to have it always applied.
 
@@ -174,7 +190,7 @@ var tttsProfile = {
 };
 ```
 
-### How to silence non-story text
+## How to silence non-story text
 
 Some games have additional menus and navigation that we would rather are not read every time a passage loads. We can exclude them from being spoken using the `silence` option.
 
@@ -182,7 +198,7 @@ Use your web browsers 'Element Inspector' to find the id or class name of an ele
 
 This method isn't always possible, it depends a lot on the game and what you want to silence. It also requires some basic knowledge of html.
 
-## Default Options
+# Default Options
 
 | Option Name     | Type    | Description                                                                                                    |
 | --------------- | ------- | -------------------------------------------------------------------------------------------------------------- |
@@ -197,23 +213,7 @@ This method isn't always possible, it depends a lot on the game and what you wan
 | voice           | integer | the array key of the active SpeechSynthesisUtterance voice. full array in `window.speechSynthesis.getVoices()` |
 | volume          | float   | same as SpeechSynthesisUtterance.volume                                                                        |
 
-## Donate
-
-I made this tool for myself, not to make any money from. I don't personally need your money but i do know of some people that would really appreciate it. So if you find this tool useful, please send your donation to the RSPB.
-
-<a href="https://www.rspb.org.uk/join-and-donate/donate/make-a-donation-to-the-rspb/make-a-donation/">Donate to the RSPB</a>
-
-The RSPB (Royal Society for the Protection of Birds) is a wonderful conservation charity based in the U.K. Despite it's name, it looks after all forms wildlife and habitats. They are a highly ethical organization that will use your money wisely.
-
-_The RSPB is not linked or affilliated with TTTS in any way_
-
-## FAQ (a.k.a what i think you might have questions about)
-
-### Its acting weird
-
-Yeah... depending on how the game developer has set up their passages it's really difficult to predict what text structure will be used. The `trigger` and `silence` options can help or completely fix issues, but sometimes you just have to live with some inconvenience, soz...
-
-## Thank You For Reading
+# Thank You For Reading
 
 "**It doesn't stop being magic just because you know how it works.**"\
 _Terry Pratchett / The Wee Free Men_

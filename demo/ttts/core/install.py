@@ -13,20 +13,12 @@ print("Beginning installation...")
 print("")
 
 oldStr = "</head>"
-newStr = "<script src='ttts/ttts-config.js'></script></head>"
+newStr = "<script src='ttts/core/ttts.js'></script></head>"
 source = "..\example.html"
 output = "..\example-ttts.html"
 ext1 = ".html"
 ext2 = "-ttts.html"
 gameDir = "../"
-
-# f = open(source,"rb")
-# detector = UniversalDetector()
-# for line in f.readlines():
-#     detector.feed(line)
-#     if detector.done: break
-# detector.close()
-# print(detector.result)
 
 # Find available html files
 directory = os.fsencode(gameDir)

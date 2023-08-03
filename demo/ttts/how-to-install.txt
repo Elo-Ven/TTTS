@@ -1,0 +1,46 @@
+=========================
+ ____  ____  ____  ____ 
+(_  _)(_  _)(_  _)/ ___)
+  )(    )(    )(  \___ \
+ (__)  (__)  (__) (____/
+  Twine Text To Speech
+=========================
+
+
+
+HOW TO INSTALL
+-------------------------
+The automatic installer is designed to work with Windows and requires Python to be installed. If you run into any problems, please see the GitHub page (link below) for instructions on manual installation (copy-paste 1 line to an html file) which will work with any system.
+
+1. Place the 'ttts' folder inside of your game folder, next to your games html file (e.g. mygame.html)
+
+2. Run install.bat (found in the same folder as this text file)
+
+3. Follow instructions in the installer
+
+4. Run your game from the modded file (e.g. mygame-ttts.html)
+
+
+Optional but recommended
+
+3a. Download the Game Profile with name of your game from our GitHub page, link below
+
+3b. Replace ttts-profile.js with your downloaded Game Profile
+
+
+
+GAME PROFILES
+-------------------------
+Game Profile significantly increase the compatibility with specific games by having the TTTS reader ignore non-story text like menu's, buttons and game stats which can impede immersion and generally be annoying.
+
+We have created profiles for some of the more popular games but you may need to source these from the community for other games. There are many games where Game Profiles are not required and TTTS will work perfectly fine without a profile.
+
+https://github.com/Elo-Ven/TTTS/tree/main/dist/profile
+
+
+
+MORE INFO & MANUAL INSTALLATION
+-------------------------
+See the GitHub page for much more info on how to manually install TTTS and how to get the most from it.
+
+https://github.com/Elo-Ven/TTTS/

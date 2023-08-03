@@ -1,15 +1,20 @@
 /**
  * TTTS - Twine Text To Speech
- * Custom Config
+ * Game Profile
  *
- * See the main JS file for more info about this project
+ * GAME DETAILS
+ * =========================
+ * NAME: Degrees of Lewdity
+ * VERSION: 0.4.1.7
  *
- * INSTRUCTIONS
- * Remove the // from the start of a line and change its value to enable the custom setting
+ * USAGE INSTRUCTIONS
+ * =========================
+ * Remove the // from the start of a line and change its value to enable the custom setting. For more information, please see the project website
  *
+ * https://github.com/Elo-Ven/TTTS/
  */
 
-var tttsConfig = {
+var tttsProfile = {
     //container: '#passages',
     //pitch: 1,
     //rate: 1.0,
@@ -35,11 +40,4 @@ var tttsConfig = {
     //trigger: ['.link-internal'],
     //voice: 0,
     //volume: 1,
-};
-
-window.onload = function () {
-    const config = document.createElement('script');
-    config.src = 'ttts/core/ttts.js';
-    config.type = 'text/javascript';
-    document.querySelector('body').appendChild(config);
 };

@@ -1,8 +1,8 @@
 /**
  * TTTS - Twine Text To Speech
- * Version: 2.1.0
+ * Version: 2.2.0
  *
- * Licence: Creative Common Attribution 4.0 International (https://creativecommons.org/licenses/by/4.0/)
+ * Licence: MIT (https://github.com/Elo-Ven/TTTS/blob/main/LICENSE)
  *
  * This is a mod for Twine HTML games that work in an internet browser.
  * It provides automated support for playing back the game story text via the browsers in-built TTS tools.
@@ -13,12 +13,18 @@
 
 class TwineTextToSpeech {
     // Speech Synthesis options
-    debug = false;
-    container = '#passages, tw-passage';
-    volume = 1;
     pitch = 1;
     rate = 1;
     voice = 0;
+    volume = 1;
+
+    // usage options
+    container = '#passages, tw-passage';
+    overwriteParams = [
+        //'trigger',
+        //'silence'
+    ];
+    debug = false;
     silence = [
         '.link-internal',
         'tw-link',
@@ -34,6 +40,7 @@ class TwineTextToSpeech {
         '.error',
     ];
     trigger = ['.link-internal', 'tw-link'];
+    triggerIgnore = [];
 
     // Speech Synthesis objects
     voices = [];
@@ -63,10 +70,10 @@ class TwineTextToSpeech {
     init() {
         console.log('TTTS | Running setup');
         this.loadSynth().then(() => {
-            this.importConfig();
+            this.importProfile();
             this.getParams();
             this.initHtml();
-            this.setVoiceConfig();
+            this.fetchVoices();
             this.initEvents();
             this.onLoaded();
         });
@@ -75,15 +82,20 @@ class TwineTextToSpeech {
     /**
      * imports support data from other files
      */
-    importConfig() {
+    importProfile() {
         //set default config params if supplied
-        if (typeof tttsConfig !== 'undefined') {
+        if (typeof tttsProfile !== 'undefined') {
             const imported = [];
-            for (const key in tttsConfig) {
-                if (key === 'silence' || key === 'tigger') {
-                    this[key] = this[key].concat(tttsConfig[key]);
+            const arrays = ['silence', 'trigger', 'triggerIgnore'];
+            for (const key in tttsProfile) {
+                if (arrays.includes(key)) {
+                    if (this.overwriteParams.includes(key)) {
+                        this[key] = tttsProfile[key];
+                    } else {
+                        this[key] = this[key].concat(tttsProfile[key]);
+                    }
                 } else {
-                    this[key] = tttsConfig[key];
+                    this[key] = tttsProfile[key];
                 }
                 imported.push(key);
             }
@@ -111,6 +123,14 @@ class TwineTextToSpeech {
             '<li>Stop: 0 / Numpad 0</li>' +
             '<li>Next: > (right arrow)</li>' +
             '<li>Back: < (left arrow)</li></ul>' +
+            '</div>' +
+            '<div id="ttts-volume">' +
+            '<p class="ttts-title-field">Volume: <span class="ttts-config-slider-val">' +
+            this.volume +
+            '</span></p>' +
+            '<input data-id="volume" type="range" class="ttts-config-slider" min="0" max="1" step="0.1" value="' +
+            this.volume +
+            '">' +
             '</div>' +
             '<div id="ttts-rate">' +
             '<p class="ttts-title-field">Speed: <span class="ttts-config-slider-val">' +
@@ -168,6 +188,7 @@ class TwineTextToSpeech {
      * set all of the user trigger event listeners
      */
     initEvents() {
+        //click the play/pause button in the player
         this.playBtn.addEventListener('click', (event) => {
             if (this.synth.speaking) {
                 this.reset();
@@ -176,18 +197,21 @@ class TwineTextToSpeech {
             }
         });
 
+        //click the next button in the player
         this.nextBtn.addEventListener('click', (event) => {
             if (!event.target.classList.contains('disabled')) {
                 this.onNext();
             }
         });
 
+        //click the back button in the player
         this.prevBtn.addEventListener('click', (event) => {
             if (!event.target.classList.contains('disabled')) {
                 this.onPrev();
             }
         });
 
+        //click the settings button in the player
         this.configBtn.addEventListener('click', (event) => {
             if (this.configContainer.classList.contains('open')) {
                 this.configContainer.classList.remove('open');
@@ -196,6 +220,7 @@ class TwineTextToSpeech {
             }
         });
 
+        //triggers for the settings popup
         this.configContainer.addEventListener('click', (event) => {
             if (event.target.classList.contains('ttts-voice-sample')) {
                 this.synth.cancel();
@@ -219,6 +244,7 @@ class TwineTextToSpeech {
             }
         });
 
+        //triggers for the settings popup slider bars
         this.configContainer.querySelectorAll('.ttts-config-slider').forEach((el) =>
             el.addEventListener('change', (event) => {
                 const id = event.target.dataset.id;
@@ -233,6 +259,7 @@ class TwineTextToSpeech {
             })
         );
 
+        //keyboard triggers
         document.addEventListener('keydown', (e) => {
             if (e.which == 96 || e.which == 48) {
                 //Numpad0
@@ -259,6 +286,10 @@ class TwineTextToSpeech {
         });
     }
 
+    /**
+     * Import speechSynthesis from the browser
+     * @returns Promise
+     */
     loadSynth() {
         return new Promise(function (resolve, reject) {
             let synth = window.speechSynthesis;
@@ -278,17 +309,33 @@ class TwineTextToSpeech {
      * Add an event to check for story navigation interactions
      */
     getPassages() {
+        //re-fetch the story content
         this.passagesContainer = document.querySelector(this.container);
+
+        //add an event listener if it doesn't already exist (can be removed when using story navigation)
         if (this.passagesContainer && this.passagesContainer.getAttribute('listening') !== '1') {
             this.passagesContainer.setAttribute('listening', '1');
             this.passagesContainer.addEventListener('mouseup', (e) => {
-                let valid = true;
+                let valid = false;
+
+                //is the thing being clicked in the trigger list
                 this.trigger.map((selector) => {
-                    if (valid && e.target.closest(selector)) {
-                        valid = false;
-                        this.onPlay();
+                    if (!valid && e.target.closest(selector)) {
+                        valid = true;
                     }
                 });
+
+                //is the things being click in the ignore list
+                this.triggerIgnore.map((selector) => {
+                    if (valid && e.target.closest(selector)) {
+                        valid = false;
+                    }
+                });
+
+                //play if the thing being clicked if valid
+                if (valid) {
+                    this.onPlay();
+                }
             });
         }
     }
@@ -303,8 +350,11 @@ class TwineTextToSpeech {
         }
     }
 
+    /**
+     * attempt to get module options form the browsers local storage
+     */
     getParams() {
-        const params = ['voice', 'rate', 'pitch'];
+        const params = ['voice', 'rate', 'pitch', 'volume'];
         params.map((param) => {
             this.getParam(param);
         });
@@ -314,7 +364,7 @@ class TwineTextToSpeech {
      * get the voices available in the browser and update the list in the config section
      * @returns bool
      */
-    setVoiceConfig() {
+    fetchVoices() {
         if (this.voices.length > 0) {
             return false;
         }
@@ -438,6 +488,7 @@ class TwineTextToSpeech {
                 text = text.replaceAll('..', '.');
                 //text = text.replaceAll('.', ',');
                 text = text.replaceAll(',,', ',');
+                text = text.trim();
 
                 if (text !== '' && !duplicate.includes(text)) {
                     duplicate.push(text);
@@ -481,7 +532,7 @@ class TwineTextToSpeech {
         }
 
         if (typeof this.queue[this.queueCount] !== 'undefined') {
-            this.speak(this.queue[this.queueCount], { events: true });
+            this.speak(this.queue[this.queueCount]);
         } else {
             this.reset();
         }
@@ -520,7 +571,7 @@ class TwineTextToSpeech {
      * @param {string} msg
      * @param {object} opts
      */
-    speak(msg, opts = {}) {
+    speak(msg) {
         //create utterance and set params
         this.utter = new SpeechSynthesisUtterance();
         this.utter.rate = this.rate;
@@ -562,7 +613,7 @@ class TwineTextToSpeech {
      * highlight the story text currently begin spoken, WIP - very temperamental and heavily depends on the story html structure
      * @param {string} msg
      */
-    highlighter(msg) {
+    /*highlighter(msg) {
         document
             .querySelectorAll('.ttts-highlight')
             .forEach((el) => el.classList.remove('ttts-highlight'));
@@ -582,19 +633,24 @@ class TwineTextToSpeech {
         // let highlight = this.passagesContainer.innerHTML;
         // highlight = highlight.replaceAll(msg, '<span class="ttts-highlight">' + msg + '</span>');
         // this.passagesContainer.innerHTML = highlight;
-    }
+    }*/
 }
 
 // INIT
 if ('speechSynthesis' in window) {
+    //attempt to import the game profile
+    const profile = document.createElement('script');
+    profile.src = 'ttts/ttts-profile.js';
+    profile.type = 'text/javascript';
+    document.querySelector('head').appendChild(profile);
+
+    //wait for the page to load and move to the end of the render queue before init
     const ttts = new TwineTextToSpeech();
-    if (typeof tttsConfig !== 'undefined') {
-        ttts.init();
-    } else {
-        window.onload = function () {
+    window.onload = function () {
+        setTimeout(() => {
             ttts.init();
-        };
-    }
+        }, 1);
+    };
 } else {
     console.log('TTTS | Failed to load, speechSynthesis is not available in your browser');
 }

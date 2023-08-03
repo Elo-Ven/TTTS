@@ -1,6 +1,6 @@
 # TTTS - Twine Text To Speech
 
-Version: 2.1.0 \
+Version: 2.2.0 \
 Licence: MIT
 
 ## Summary
@@ -74,14 +74,14 @@ Now, open the file in a suitable text editor such as Notepad++ and navigate to t
 Copy this line of code
 
 ```
-<script src="ttts/ttts-config.js"></script>
+<script src="ttts/core/ttts.js"></script>
 ```
 
 And paste it just before the `</body>` tag in the html file you just opened
 
 ```
     </script>
-	<script src="ttts/ttts.js"></script>
+	<script src="ttts/core/ttts.js"></script>
 </body>
 </html>
 ```
@@ -119,6 +119,8 @@ Unknown - other
 | Friends of Mine      | ⭐⭐⭐⭐⭐          | No             | 1.2.4          |
 | Incubus City by Wape | ⭐⭐⭐⭐⭐          | Yes            | 1.15.0         |
 | Lost in Laminate     | ⭐⭐⭐⭐⭐          | No             | 10.0e          |
+| Master of Rana       | ⭐⭐⭐⭐            | Yes            | 0.8.19         |
+| Perverted Education  | ⭐⭐⭐⭐⭐          | Yes            | 1.3200         |
 | The Company          | ⭐⭐⭐              | No             | 5.0            |
 | X-Change-Life        | ⭐⭐⭐⭐            | Yes            | 1.15.0         |
 
@@ -143,25 +145,29 @@ https://github.com/Elo-Ven/TTTS/tree/main/dist/profile
 
 ### How to import an existing profile
 
-To import a pre-made profile, download the profile file and rename it to `ttts-config.js`. Then place it in the ttts folder, overwriting the existing copy of `ttts-config.js`.
+To import a pre-made profile, download the profile file and rename it to `ttts-profile.js`. Then place it in the ttts folder, overwriting the existing copy of `ttts-profile.js`.
 
 Then open your game and the new settings will be automatically applied.
 
 ### How to create a new profile
 
-Open `ttts-config.js` in a suitable text editor and then remove the `//` from the beginning of the line to enable an option. Then change the value to have it always applied.
+Open `ttts-profile.js` in a suitable text editor and then remove the `//` from the beginning of the line to enable an option. Then change the value to have it always applied.
 
 In the case of Pitch, Rate and Voice, these options act as default settings and can be overridden in-game using the settings popup.
 
 ```
-var tttsConfig = {
-    //container: '#passages',
-    //pitch: 1,
-    //rate: 1.0,
-    //silence: ['.link-internal'],
-    //trigger: ['.link-internal'],
+var tttsProfile = {
+    //pitch: 1.5,
+    //rate: 1.5,
     //voice: 0,
-    //volume: 1,
+    //volume: 0.5,
+    //
+    //container: '#example',
+    //debug: true,
+    //overwriteParams: ['trigger'],
+    //silence: ['.example'],
+    //trigger: ['.example'],
+    //triggerIgnore: ['.example'],
 };
 ```
 
@@ -169,21 +175,34 @@ var tttsConfig = {
 
 Some games have additional menus and navigation that we would rather are not read every time a passage loads. We can exclude them from being spoken using the `silence` option.
 
-Use your web browsers 'Element Inspector' to find the id or class name of an element that encloses the text you want to exclude. Then add a JS selector to the silence array in `ttts-config.js` and then refresh the page.
+Use your web browsers 'Element Inspector' to find the id or class name of an element that encloses the text you want to exclude. Then add a JS selector to the silence array in `ttts-profile.js` and then refresh the page.
 
 This method isn't always possible, it depends a lot on the game and what you want to silence. It also requires some basic knowledge of html.
 
 ## Default Options
 
-| Option Name | Type    | Default              | Description                                                                                                    |
-| ----------- | ------- | -------------------- | -------------------------------------------------------------------------------------------------------------- |
-| container   | string  | `'#passages'`        | the id or other JS selector of element containing the story text                                               |
-| pitch       | float   | `1`                  | value is passed directly to SpeechSynthesisUtterance.pitch                                                     |
-| rate        | float   | `1`                  | value is passed directly to SpeechSynthesisUtterance.rate                                                      |
-| silence     | array   | `['.link-internal']` | list of css style selectors for elements that should not be included in the play queue                         |
-| trigger     | array   | `['.link-internal']` | list of css style selectors for elements that should trigger TTTS to autoplay (e.g. passage navigation)        |
-| voice       | integer | `0`                  | the array key of the active SpeechSynthesisUtterance voice. full array in `window.speechSynthesis.getVoices()` |
-| volume      | float   | `1`                  | value is passed directly to SpeechSynthesisUtterance.volume                                                    |
+| Option Name     | Type    | Description                                                                                                    |
+| --------------- | ------- | -------------------------------------------------------------------------------------------------------------- |
+| container       | string  | the id or other JS selector of element containing the story text                                               |
+| debug           | boolean | When `true`, additional comments will be displayed in the browser console                                      |
+| overwriteParams | array   | A list of options that should be overwritten with the profile option instead of being appended to              |
+| pitch           | float   | same as SpeechSynthesisUtterance.pitch                                                                         |
+| rate            | float   | same as SpeechSynthesisUtterance.rate                                                                          |
+| silence         | array   | list of JS selectors for elements that will be removed removed                                                 |
+| trigger         | array   | list of JS selectors for elements that should trigger TTTS to autoplay (e.g. story navigation)                 |
+| triggerIgnore   | array   | list of JS selectors for elements that are included in the `trigger` option but shouldn't trigger the autoplay |
+| voice           | integer | the array key of the active SpeechSynthesisUtterance voice. full array in `window.speechSynthesis.getVoices()` |
+| volume          | float   | same as SpeechSynthesisUtterance.volume                                                                        |
+
+## Donate
+
+I made this tool for myself, not to make any money from. I don't personally need your money but i do know of some people that would really appreciate it. So if you find this tool useful, please send your donation to the RSPB.
+
+<a href="https://www.rspb.org.uk/join-and-donate/donate/make-a-donation-to-the-rspb/make-a-donation/">Donate to the RSPB</a>
+
+The RSPB (Royal Society for the Protection of Birds) is a wonderful conservation charity based in the U.K. Despite it's name, it looks after all forms wildlife and habitats. They are a highly ethical organization that will use your money wisely.
+
+_The RSPB is not linked or affilliated with TTTS in any way_
 
 ## FAQ (a.k.a what i think you might have questions about)
 

@@ -32,12 +32,12 @@ gulp.task('js', function () {
 });
 
 gulp.task('profile', function () {
-    return gulp.src(['src/profile/*.js']).pipe(plumber()).pipe(gulp.dest('dist/profile'));
+    return gulp.src(['src/profile/**/*.js']).pipe(plumber()).pipe(gulp.dest('dist/profile'));
 });
 
 gulp.task('support', function () {
     return gulp
-        .src(['*.md', 'src/**/*.bat', 'src/**/*.py', 'src/*.js'])
+        .src(['src/*.txt', 'src/**/*.bat', 'src/**/*.py', 'src/*.js'])
         .pipe(plumber())
         .pipe(gulp.dest('dist/ttts'))
         .pipe(gulp.dest('demo/ttts'));

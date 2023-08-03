@@ -11,7 +11,9 @@ Your web browser already has text-to-speech tools built into it right now. Your 
 
 The mod is very simple to install and can also be added by anyone, developer or player.
 
-![Screenshot](demo/screenshots/1.png 'Screenshot')
+<a href="https://elo-ven.github.io/TTTS/">Demo</a>
+
+![Screenshot](docs/screenshots/1.png 'Screenshot')
 
 ## Table of Contents
 
@@ -36,6 +38,7 @@ The mod is very simple to install and can also be added by anyone, developer or 
         -   [How to create a new profile](#how-to-create-a-new-profile)
         -   [How to silence non-story text](#how-to-silence-non-story-text)
     -   [Default Options](#default-options)
+    -   [Donate](#donate)
     -   [FAQ (a.k.a what i think you might have questions about)](#faq-aka-what-i-think-you-might-have-questions-about)
         -   [Its acting weird](#its-acting-weird)
     -   [Thank You For Reading](#thank-you-for-reading)
@@ -53,8 +56,8 @@ Find the game directory for the game you want to mod. This is the folder where t
 
 ### 3 - Unpack
 
-Copy the 'ttts' directory into the game directory, next to the games .html. (go to the demo directory to see an example) \
-https://github.com/Elo-Ven/TTTS/tree/main/demo
+Copy the 'ttts' directory into the game directory, next to the games .html. (go to the docs directory to see an example) \
+https://github.com/Elo-Ven/TTTS/tree/main/docs
 
 ### 4A - Automatic Import (recommended)
 

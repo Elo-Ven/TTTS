@@ -140,9 +140,12 @@ Unknown - other
 | Friends of Mine      | ⭐⭐⭐⭐⭐          | No             | 1.2.4          |
 | Incubus City by Wape | ⭐⭐⭐⭐⭐          | Yes            | 1.15.0         |
 | Lost in Laminate     | ⭐⭐⭐⭐⭐          | No             | 10.0e          |
+| Love & Vice          | ⭐⭐⭐⭐⭐          | No             | 11.75          |
 | Master of Rana       | ⭐⭐⭐⭐            | Yes            | 0.8.19         |
 | Perverted Education  | ⭐⭐⭐⭐⭐          | Yes            | 1.3200         |
-| The Company          | ⭐⭐⭐              | No             | 5.0            |
+| Secretary            | ⭐⭐⭐⭐⭐          | Yes            | 0.9.2.3        |
+| The Company          | ⭐⭐⭐⭐            | No             | 5.0            |
+| The Making of a Slut | ⭐⭐⭐⭐⭐          | Yes            | 0.9.4          |
 | X-Change-Life        | ⭐⭐⭐⭐            | Yes            | 1.15.0         |
 
 ⭐ Not currently compatible \

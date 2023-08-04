@@ -12,6 +12,8 @@
  */
 
 class TwineTextToSpeech {
+    version = '2.3';
+
     // Speech Synthesis options
     pitch = 1;
     rate = 1;
@@ -116,7 +118,9 @@ class TwineTextToSpeech {
         const configHtml =
             '<div id="ttts-config-container">' +
             '<div id="ttts-config-body">' +
-            '<p id="ttts-title">Twine Screen Reader Settings</p>' +
+            '<p id="ttts-title">Twine Screen Reader Settings (v' +
+            this.version +
+            ')</p>' +
             '<div id="ttts-controls">' +
             '<p class="ttts-title-field">Shortcuts</p>' +
             '<ul><li>Play: 0 / Numpad 0</li>' +

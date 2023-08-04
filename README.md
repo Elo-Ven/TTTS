@@ -134,6 +134,7 @@ Unknown - other
 | -------------------- | ------------------- | -------------- | -------------- |
 | A Spell For All      | ⭐                  | n/a            | 14.13          |
 | Adam & Gaia          | ⭐⭐⭐⭐⭐          | No             | 3.0            |
+| Become Alpha         | ⭐⭐⭐⭐            | Yes            | 0.3.49         |
 | College Daze         | ⭐⭐⭐⭐⭐          | No             | .390a          |
 | Degrees of Lewdity   | ⭐⭐⭐⭐            | Yes            | 0.4.1.7        |
 | Female Agent         | ⭐⭐⭐⭐⭐          | Yes            | 118            |

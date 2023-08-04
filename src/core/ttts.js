@@ -21,6 +21,7 @@ class TwineTextToSpeech {
     volume = 1;
 
     // usage options
+    autoplay = true;
     container = '#passages, tw-passage';
     overwriteParams = [
         //'trigger',
@@ -32,6 +33,7 @@ class TwineTextToSpeech {
         'tw-link',
         'tw-sidebar',
         'script',
+        'table',
         'select',
         'textarea',
         'img',
@@ -124,10 +126,14 @@ class TwineTextToSpeech {
             '<div id="ttts-controls">' +
             '<p class="ttts-title-field">Shortcuts</p>' +
             '<ul><li>Play: 0 / Numpad 0</li>' +
-            '<li>Stop: 0 / Numpad 0</li>' +
             '<li>Next: > (right arrow)</li>' +
             '<li>Back: < (left arrow)</li></ul>' +
             '</div>' +
+            '<div id="ttts-autoplay"><p class="ttts-autoplay-field">Autoplay: ' +
+            '<button class="ttts-autoplay-btn">' +
+            (this.autoplay ? 'On' : 'Off') +
+            '</button>' +
+            '</p></div>' +
             '<div id="ttts-volume">' +
             '<p class="ttts-title-field">Volume: <span class="ttts-config-slider-val">' +
             this.volume +
@@ -226,7 +232,15 @@ class TwineTextToSpeech {
 
         //triggers for the settings popup
         this.configContainer.addEventListener('click', (event) => {
-            if (event.target.classList.contains('ttts-voice-sample')) {
+            if (event.target.classList.contains('ttts-autoplay-btn')) {
+                this.autoplay = !this.autoplay;
+                this.saveParam('autoplay', this.autoplay);
+                if (this.autoplay) {
+                    event.target.innerHTML = 'On';
+                } else {
+                    event.target.innerHTML = 'Off';
+                }
+            } else if (event.target.classList.contains('ttts-voice-sample')) {
                 this.synth.cancel();
 
                 this.speak({
@@ -322,6 +336,10 @@ class TwineTextToSpeech {
             this.passagesContainer.addEventListener('mouseup', (e) => {
                 let valid = false;
 
+                if (!this.autoplay) {
+                    return false;
+                }
+
                 //is the thing being clicked in the trigger list
                 this.trigger.map((selector) => {
                     if (!valid && e.target.closest(selector)) {
@@ -350,6 +368,20 @@ class TwineTextToSpeech {
     getParam(id) {
         var stored = localStorage.getItem('ttts-' + id);
         if (typeof stored !== 'undefined' && stored !== null) {
+            switch (id) {
+                case 'autoplay':
+                    stored = stored === 'true';
+                    break;
+                case 'voice':
+                    stored = parseInt(stored);
+                    break;
+                case 'rate':
+                case 'pitch':
+                case 'volume':
+                    stored = parseFloat(stored);
+                    break;
+            }
+
             this[id] = stored;
         }
     }
@@ -358,7 +390,7 @@ class TwineTextToSpeech {
      * attempt to get module options form the browsers local storage
      */
     getParams() {
-        const params = ['voice', 'rate', 'pitch', 'volume'];
+        const params = ['voice', 'rate', 'pitch', 'volume', 'autoplay'];
         params.map((param) => {
             this.getParam(param);
         });
@@ -567,7 +599,8 @@ class TwineTextToSpeech {
      */
     saveParam(param, val) {
         localStorage.setItem('ttts-' + param, val);
-        this[param] = localStorage.getItem('ttts-' + param);
+        this.getParam(param);
+        //this[param] = localStorage.getItem('ttts-' + param);
     }
 
     /**

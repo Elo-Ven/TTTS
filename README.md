@@ -61,7 +61,7 @@ https://github.com/Elo-Ven/TTTS/tree/main/docs
 
 ## 4A - Automatic Import (recommended)
 
-Run `install.bat` (_require access to Python_) and when asked, enter the filename of your games main html file (the one you open the game with). The original file will not be altered, instead a new copy of that file will be created that ends `-mod.html`.
+Run `install.bat` (_require access to Python_) and when asked, enter the filename of your games main html file (the one you open the game with). The original file will not be altered, instead a new copy of that file will be created that ends `-ttts.html`.
 
 All done, the game is now ready to play. Open the newly created file to play the game with TTTS enabled.
 

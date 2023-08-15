@@ -142,7 +142,7 @@ Unknown - other
 | Incubus City by Wape | ⭐⭐⭐⭐⭐          | Yes            | 1.15.0         |
 | Lost in Laminate     | ⭐⭐⭐⭐⭐          | No             | 10.0e          |
 | Love & Vice          | ⭐⭐⭐⭐⭐          | No             | 11.75          |
-| Master of Rana       | ⭐⭐⭐⭐            | Yes            | 0.8.19         |
+| Masters of Raana     | ⭐⭐⭐⭐            | Yes            | 0.8.19         |
 | Perverted Education  | ⭐⭐⭐⭐⭐          | Yes            | 1.3200         |
 | Secretary            | ⭐⭐⭐⭐⭐          | Yes            | 0.9.2.3        |
 | The Company          | ⭐⭐⭐⭐            | No             | 5.0            |

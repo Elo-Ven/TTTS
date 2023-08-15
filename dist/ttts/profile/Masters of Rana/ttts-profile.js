@@ -4,7 +4,7 @@
  *
  * GAME DETAILS
  * =========================
- * NAME: Master of Rana
+ * NAME: Masters of Raana
  * VERSION: 0.8.19
  *
  * USAGE INSTRUCTIONS

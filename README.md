@@ -206,6 +206,7 @@ This method isn't always possible, it depends a lot on the game and what you wan
 
 | Option Name     | Type    | Description                                                                                                    |
 | --------------- | ------- | -------------------------------------------------------------------------------------------------------------- |
+| autoplay        | boolean | determines if TTTS should start automatically when moving to the next passage                                  |
 | container       | string  | the id or other JS selector of element containing the story text                                               |
 | debug           | boolean | When `true`, additional comments will be displayed in the browser console                                      |
 | overwriteParams | array   | A list of options that should be overwritten with the profile option instead of being appended to              |

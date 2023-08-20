@@ -28,6 +28,7 @@ class TwineTextToSpeech {
         //'silence'
     ];
     debug = false;
+    highlighter = false;
     silence = [
         '.link-internal',
         'tw-link',
@@ -52,6 +53,7 @@ class TwineTextToSpeech {
     synth = window.speechSynthesis;
 
     // text management
+    htmlBackup = '';
     passagesContainer;
     queue = [];
     queueCount = 0;
@@ -134,6 +136,11 @@ class TwineTextToSpeech {
             (this.autoplay ? 'On' : 'Off') +
             '</button>' +
             '</p></div>' +
+            // '<div id="ttts-highlighter"><p class="ttts-highlighter-field">Highlighter: ' +
+            // '<button class="ttts-highlighter-btn">' +
+            // (this.highlighter ? 'On' : 'Off') +
+            // '</button>' +
+            // '</p></div>' +
             '<div id="ttts-volume">' +
             '<p class="ttts-title-field">Volume: <span class="ttts-config-slider-val">' +
             this.volume +
@@ -236,6 +243,14 @@ class TwineTextToSpeech {
                 this.autoplay = !this.autoplay;
                 this.saveParam('autoplay', this.autoplay);
                 if (this.autoplay) {
+                    event.target.innerHTML = 'On';
+                } else {
+                    event.target.innerHTML = 'Off';
+                }
+            } else if (event.target.classList.contains('ttts-highlighter-btn')) {
+                this.highlighter = !this.highlighter;
+                this.saveParam('highlighter', this.highlighter);
+                if (this.highlighter) {
                     event.target.innerHTML = 'On';
                 } else {
                     event.target.innerHTML = 'Off';
@@ -370,6 +385,7 @@ class TwineTextToSpeech {
         if (typeof stored !== 'undefined' && stored !== null) {
             switch (id) {
                 case 'autoplay':
+                case 'highlighter':
                     stored = stored === 'true';
                     break;
                 case 'voice':
@@ -390,7 +406,7 @@ class TwineTextToSpeech {
      * attempt to get module options form the browsers local storage
      */
     getParams() {
-        const params = ['voice', 'rate', 'pitch', 'volume', 'autoplay'];
+        const params = ['voice', 'rate', 'pitch', 'volume', 'autoplay', 'highlighter'];
         params.map((param) => {
             this.getParam(param);
         });
@@ -555,6 +571,10 @@ class TwineTextToSpeech {
      * process the play queue and update the next/prev buttons
      */
     run() {
+        // if (this.htmlBackup === '') {
+        //     this.htmlBackup = this.passagesContainer.innerHTML;
+        // }
+
         if (this.queueCount === 0) {
             this.prevBtn.classList.add('disabled');
         } else {
@@ -588,9 +608,15 @@ class TwineTextToSpeech {
         this.nextBtn.classList.add('disabled');
         this.prevBtn.classList.add('disabled');
         this.playBtn.classList.remove('play');
-        this.passagesContainer
-            .querySelectorAll('.ttts-highlight')
-            .forEach((el) => el.classList.remove('ttts-highlight'));
+
+        //if using the highlighter, put the html back to its original state incase the highlighter has broken the html
+        // if (this.highlighter) {
+        //     this.passagesContainer.innerHTML = this.htmlBackup;
+        //     this.passagesContainer
+        //         .querySelectorAll('.ttts-highlight')
+        //         .forEach((el) => el.classList.remove('ttts-highlight'));
+        // }
+        // this.htmlBackup = '';
     };
 
     /**
@@ -643,34 +669,29 @@ class TwineTextToSpeech {
 
         this.synth.speak(this.utter);
 
-        //this.highlighter(msg.text);
+        // if (this.highlighter) {
+        //     this.applyHighlight(msg.text);
+        // }
     }
 
     /**
      * highlight the story text currently begin spoken, WIP - very temperamental and heavily depends on the story html structure
      * @param {string} msg
      */
-    /*highlighter(msg) {
+    applyHighlight(msg) {
         document
             .querySelectorAll('.ttts-highlight')
             .forEach((el) => el.classList.remove('ttts-highlight'));
 
-        const words = msg.split(' ');
         let tmp = this.passagesContainer.innerHTML;
 
-        words.map((word) => {
-            const highlight = document.createElement('span');
-            highlight.className = 'ttts-highlight';
-            highlight.innerHTML = word;
-            tmp = tmp.replaceAll(word, highlight.outerHTML);
-        });
+        const highlight = document.createElement('ttts');
+        highlight.className = 'ttts-highlight';
+        highlight.innerHTML = msg;
+        tmp = tmp.replaceAll(msg, highlight.outerHTML);
 
         this.passagesContainer.innerHTML = tmp;
-
-        // let highlight = this.passagesContainer.innerHTML;
-        // highlight = highlight.replaceAll(msg, '<span class="ttts-highlight">' + msg + '</span>');
-        // this.passagesContainer.innerHTML = highlight;
-    }*/
+    }
 }
 
 // INIT

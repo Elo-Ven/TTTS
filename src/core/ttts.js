@@ -1,6 +1,6 @@
 /**
  * TTTS - Twine Text To Speech
- * Version: 2.2.0
+ * Version: 2.4.0
  *
  * Licence: MIT (https://github.com/Elo-Ven/TTTS/blob/main/LICENSE)
  *
@@ -12,7 +12,7 @@
  */
 
 class TwineTextToSpeech {
-    version = '2.3';
+    version = '2.4';
 
     // Speech Synthesis options
     pitch = 1;
@@ -66,6 +66,7 @@ class TwineTextToSpeech {
     prevBtn;
     configBtn;
     configContainer;
+    tttsContainer;
 
     //other
     framework = '';
@@ -191,9 +192,15 @@ class TwineTextToSpeech {
         });
 
         //output to page
-        document.querySelector('body').insertAdjacentHTML('beforeend', configHtml);
-        document.querySelector('body').appendChild(buttonContainer);
+        const tttsContainer = document.createElement('div');
+        tttsContainer.id = 'ttts';
+        tttsContainer.classList.add('ttts-enable');
 
+        tttsContainer.insertAdjacentHTML('beforeend', configHtml);
+        tttsContainer.appendChild(buttonContainer);
+        document.querySelector('body').appendChild(tttsContainer);
+
+        this.tttsContainer = document.querySelector('#ttts');
         this.playBtn = document.querySelector('#ttts-play');
         this.nextBtn = document.querySelector('#ttts-next');
         this.prevBtn = document.querySelector('#ttts-prev');
@@ -314,6 +321,13 @@ class TwineTextToSpeech {
             // }
         });
 
+        window.addEventListener('ttts-enable', (event) => {
+            this.tttsContainer.classList.add('ttts-enable');
+        });
+        window.addEventListener('ttts-disable', (event) => {
+            this.tttsContainer.classList.remove('ttts-enable');
+            this.reset();
+        });
         window.addEventListener('unload', (event) => {
             this.reset();
         });
@@ -472,6 +486,9 @@ class TwineTextToSpeech {
                     this.framework = 'harlowe';
                 }
                 console.log('TTTS | Setup complete');
+
+                const evt = new CustomEvent('ttts-onloaded', { ttts: this });
+                window.dispatchEvent(evt);
             }
         }, 500);
     }
@@ -574,6 +591,10 @@ class TwineTextToSpeech {
         // if (this.htmlBackup === '') {
         //     this.htmlBackup = this.passagesContainer.innerHTML;
         // }
+
+        if (!this.tttsContainer.classList.contains('ttts-enable')) {
+            return false;
+        }
 
         if (this.queueCount === 0) {
             this.prevBtn.classList.add('disabled');

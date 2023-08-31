@@ -1,6 +1,6 @@
 # TTTS - Twine Text To Speech
 
-Version: 2.3.0 \
+Version: 2.4.0 \
 Licence: MIT
 
 # Summary
@@ -40,7 +40,8 @@ The mod is very simple to install and can also be added by anyone, developer or 
     -   [How to import an existing profile](#how-to-import-an-existing-profile)
     -   [How to create a new profile](#how-to-create-a-new-profile)
     -   [How to silence non-story text](#how-to-silence-non-story-text)
--   [Default Options](#default-options)
+-   [Options](#options)
+-   [Events](#events)
 -   [Thank You For Reading](#thank-you-for-reading)
 
 # Installation
@@ -202,7 +203,7 @@ Use your web browsers 'Element Inspector' to find the id or class name of an ele
 
 This method isn't always possible, it depends a lot on the game and what you want to silence. It also requires some basic knowledge of html.
 
-# Default Options
+# Options
 
 | Option Name     | Type    | Description                                                                                                    |
 | --------------- | ------- | -------------------------------------------------------------------------------------------------------------- |
@@ -217,6 +218,45 @@ This method isn't always possible, it depends a lot on the game and what you wan
 | triggerIgnore   | array   | list of JS selectors for elements that are included in the `trigger` option but shouldn't trigger the autoplay |
 | voice           | integer | the array key of the active SpeechSynthesisUtterance voice. full array in `window.speechSynthesis.getVoices()` |
 | volume          | float   | same as SpeechSynthesisUtterance.volume                                                                        |
+
+# Events
+
+| Event         | Action                                                                                           |
+| ------------- | ------------------------------------------------------------------------------------------------ |
+| ttts-disable  | Trigger this event to turn off and hide TTTS                                                     |
+| ttts-enable   | Trigger this event to re-enable TTTS after being disabled                                        |
+| ttts-onloaded | This event is triggered once TTTS has completed initializing. Returned params include event.ttts |
+
+## Example Event in Twine
+
+Below is an example usage of the events used in the Sugarcube demo where it toggles TTTS on/off.
+
+Passage Content:
+
+```
+<<button "Enable TTTS">><<script>>tttsEnable();<</script>><</button>>
+<<button "Disable TTTS">><<script>>tttsDisable();<</script>><</button>>
+```
+
+Story JavaScript:
+
+```
+window.tttsEnable = function(){
+  window.dispatchEvent(new Event("ttts-enable"));
+}
+
+window.tttsDisable = function(){
+  window.dispatchEvent(new Event("ttts-disable"));
+}
+```
+
+TTTS is enabled by default after initializing. If you would rather it is disabled after initializing, you can listen for the ttts-onloaded event and disable it at that point.
+
+```
+window.addEventListener('ttts-onloaded', (event) => {
+    window.dispatchEvent(new Event("ttts-disable"));
+});
+```
 
 # Thank You For Reading
 

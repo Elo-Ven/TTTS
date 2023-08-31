@@ -98,10 +98,24 @@ var LZString={_keyStr:"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz01234
 		<div id="init-lacking"><p>Browser lacks capabilities required to play.</p><p>Upgrade or switch to another browser.</p></div>
 		<div id="init-loading"><div>Loading&hellip;</div></div>
 	</div>
-	<tw-storydata name="TTTS Sample" startnode="1" creator="Twine" creator-version="2.6.2" format="SugarCube" format-version="2.36.1" ifid="352187A1-70FD-4830-B35B-6E3579E36D2E" options="" tags="" zoom="1" hidden><style role="stylesheet" id="twine-user-stylesheet" type="text/twine-css"></style><script role="script" id="twine-user-script" type="text/twine-javascript"></script><tw-passagedata pid="1" name="Step1" tags="" position="1075,500" size="100,100">
+	<tw-storydata name="TTTS Sample" startnode="1" creator="Twine" creator-version="2.6.2" format="SugarCube" format-version="2.36.1" ifid="352187A1-70FD-4830-B35B-6E3579E36D2E" options="" tags="" zoom="1" hidden><style role="stylesheet" id="twine-user-stylesheet" type="text/twine-css"></style><script role="script" id="twine-user-script" type="text/twine-javascript">window.tttsEnable = function(){
+  window.dispatchEvent(new Event("ttts-enable"));
+}
+
+window.tttsDisable = function(){
+  window.dispatchEvent(new Event("ttts-disable"));
+}</script><tw-passagedata pid="1" name="Step1" tags="" position="1075,500" size="100,100">
 This is a sample game to show a deployed version of TTTS.
 
-[[Next|Step2]]</tw-passagedata><tw-passagedata pid="2" name="Step2" tags="" position="1075,625" size="100,100">Last night, my wife&#39;s boss from her brand new job invited us over for dinner. On the drive over, my wife reiterated many times to me just how important it was to make a good impression.
+[[Next|Step2]]
+
+
+---------------
+You can interact with TTTS after it has loaded via JavaScript
+Here is an example of an enable/disable toggle. See the GitHub page for a code example.
+
+&lt;&lt;button &quot;Enable TTTS&quot;&gt;&gt;&lt;&lt;script&gt;&gt;tttsEnable();&lt;&lt;/script&gt;&gt;&lt;&lt;/button&gt;&gt;
+&lt;&lt;button &quot;Disable TTTS&quot;&gt;&gt;&lt;&lt;script&gt;&gt;tttsDisable();&lt;&lt;/script&gt;&gt;&lt;&lt;/button&gt;&gt;</tw-passagedata><tw-passagedata pid="2" name="Step2" tags="" position="1075,625" size="100,100">Last night, my wife&#39;s boss from her brand new job invited us over for dinner. On the drive over, my wife reiterated many times to me just how important it was to make a good impression.
 
 I scoffed and arrogantly informed my silly wife that I always make good impressions.
 

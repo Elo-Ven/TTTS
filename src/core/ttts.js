@@ -27,6 +27,7 @@ class TwineTextToSpeech {
         //'trigger',
         //'silence'
     ];
+    position = 'tr';
     debug = false;
     highlighter = false;
     silence = [
@@ -174,6 +175,7 @@ class TwineTextToSpeech {
         //container for player button
         const buttonContainer = document.createElement('div');
         buttonContainer.id = 'ttts-player';
+        buttonContainer.className = 'ttts-player-' + this.position;
 
         //add player buttons to the container
         const buttons = [

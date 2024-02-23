@@ -15,6 +15,7 @@
  */
 
 var tttsProfile = {
+    //position: 'tr',
     //pitch: 1.5,
     //rate: 1.5,
     //voice: 0,

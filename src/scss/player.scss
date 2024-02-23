@@ -5,7 +5,6 @@
     padding: 5px 10px;
     z-index: 500;
     display: flex;
-    border-bottom-left-radius: 15px;
     background-color: rgba(0, 0, 0, 0.5);
 
     .ttts-player-button {
@@ -67,6 +66,48 @@
         &:after {
             @extend .ttts-sprite-prev;
         }
+    }
+
+    &.ttts-player-tl {
+        right: 'auto';
+        top: 0;
+        left: 0;
+        border-bottom-right-radius: 15px;
+    }
+    &.ttts-player-tc {
+        right: 'auto';
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        border-bottom-left-radius: 15px;
+        border-bottom-right-radius: 15px;
+    }
+    &.ttts-player-tr {
+        top: 0;
+        right: 0;
+        border-bottom-left-radius: 15px;
+    }
+    &.ttts-player-bl {
+        top: 'auto';
+        right: 'auto';
+        bottom: 0;
+        left: 0;
+        border-top-right-radius: 15px;
+    }
+    &.ttts-player-bc {
+        top: 'auto';
+        right: 'auto';
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        border-top-left-radius: 15px;
+        border-top-right-radius: 15px;
+    }
+    &.ttts-player-br {
+        top: 'auto';
+        bottom: 0;
+        right: 0;
+        border-top-left-radius: 15px;
     }
 }
 

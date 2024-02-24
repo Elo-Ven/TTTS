@@ -1,5 +1,11 @@
 # Installation
 
+-   [Gamer Version](#gamer-version)
+-   [Creator Twine Version](#creator-twine-version)
+-   [Creator Twee Version](#creator-twee-version)
+-   [developer Version](#developer-version)
+-   [updating](#updating)
+
 ## Gamer Version
 
 ### 1 - Download

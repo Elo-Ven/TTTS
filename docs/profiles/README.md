@@ -7,7 +7,7 @@ These are custom settings that help TTTS work better with specific games so it i
 ## Where to find pre-made profiles
 
 There are some pre-made game profiles included in the ttts folder in your download but you can also download them here: \
-https://github.com/Elo-Ven/TTTS/tree/main/dist/ttts/profile
+https://github.com/Elo-Ven/TTTS/tree/main/dist/profiles
 
 ## How to import an existing profile
 

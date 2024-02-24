@@ -17,7 +17,7 @@ If you are not sure, get the Gamer Version
 
 Download the version best suited to your needs. Unzip and place in your games directory.
 
-For the Gamer version, then run `install.bat` or for other versions, got to the [Docs](https://github.com/Elo-Ven/TTTS/tree/main/docs/downloads) for more info.
+For the Gamer version, then run `install.bat` or for other versions, got to the [Docs](https://github.com/Elo-Ven/TTTS/tree/main/docs/install) for more info.
 
 ## Descriptions
 

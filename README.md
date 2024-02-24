@@ -6,7 +6,7 @@ Licence: MIT
 ![Screenshot](docs/screenshots/1.png 'Screenshot')
 
 -   [Summary](#summary)
--   [Demo](https://elo-ven.github.io/TTTS/)
+-   [Demo](https://elo-ven.github.io/TTTS/demo)
 -   [Docs](https://github.com/Elo-Ven/TTTS/tree/main/docs)
 -   [Compatibility](#compatibility)
 

@@ -23,7 +23,7 @@ var TwineTextToSpeech = /*#__PURE__*/function () {
   function TwineTextToSpeech() {
     var _this = this;
     _classCallCheck(this, TwineTextToSpeech);
-    _defineProperty(this, "version", '2.4');
+    _defineProperty(this, "version", '2.5');
     // Speech Synthesis options
     _defineProperty(this, "pitch", 1);
     _defineProperty(this, "rate", 1);

@@ -6,6 +6,7 @@ Licence: MIT
 ![Screenshot](docs/_docs-media/1.png 'Screenshot')
 
 -   [Summary](#summary)
+-   [Download](#download)
 -   [Demo](https://elo-ven.github.io/TTTS/demo)
 -   [Docs](https://github.com/Elo-Ven/TTTS/tree/main/docs)
 -   [Compatibility](#compatibility)
@@ -17,6 +18,12 @@ If you are that sort of person that prefers listening to audiobooks over reading
 Your web browser already has text-to-speech tools built into it right now. Your Twine game just isn't using them. This mod adds a small control panel to the game that hooks into those tools, letting you play the game, just as before, but now with voice-overs.
 
 The mod is very simple to install and can also be added by anyone, developer or player.
+
+# Download
+
+If you are playing a Twine game, you will want to download the Gamer Version. If you are making a game then there are several versions available, check the Downloads page for the version most suitable for you.
+
+[Downloads & More Info](https://github.com/Elo-Ven/TTTS/tree/main/dist)
 
 # Demo
 

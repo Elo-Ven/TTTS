@@ -3,7 +3,7 @@
 Version: 2.4.0 \
 Licence: MIT
 
-![Screenshot](docs/_docs-media/screenshots/1.png 'Screenshot')
+![Screenshot](docs/_docs-media/1.png 'Screenshot')
 
 -   [Summary](#summary)
 -   [Demo](https://elo-ven.github.io/TTTS/demo)

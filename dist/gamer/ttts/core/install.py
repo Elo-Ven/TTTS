@@ -81,11 +81,15 @@ f.close()
 
 #extra info
 print("")
+print("=================================")
+print("SUCCESS")
 print("Installation complete...")
+print("=================================")
+
 print("")
 print("Open the game using this file: ")
 print(output)
-print("")
 
-input("Press Enter to continue...")
+print("")
+input("Press Enter to close...")
 quit()

@@ -20,9 +20,9 @@ https://github.com/Elo-Ven/TTTS/tree/main/docs
 
 ### 3A - Automatic Import (recommended)
 
-Run `install.bat` (_require access to Python_) and when asked, enter the filename of your games main html file (the one you open the game with). The original file will not be altered, instead a new copy of that file will be created that ends `-ttts.html`.
+Double click on the `install.bat` to run the install (_require access to Python_) and if/when asked, enter the filename of your games main html file (will try auto find file). The original file will not be altered, instead a new copy of that file will be created that ends `-ttts.html`.
 
-All done, the game is now ready to play. Open the newly created file to play the game with TTTS enabled.
+All done, the game is now ready to play. Open the newly created file, `YOUR_GAME-ttts.html` to play the game with TTTS. If it worked, you will see the player in the top right corner immediately when you open the game.
 
 ### 3B - Manual Import
 

@@ -27,7 +27,7 @@ If you are playing a Twine game, you will want to download the Gamer Version. If
 
 # Demo
 
-For working examples of a Twine Game with TTTS, see the [Demo](https://github.com/Elo-Ven/TTTS/tree/main/demo)
+For working examples of a Twine Game with TTTS, see the [Demo](https://elo-ven.github.io/TTTS/demo)
 
 # Docs
 

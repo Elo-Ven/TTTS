@@ -7,6 +7,7 @@
 | debug           | boolean | When `true`, additional comments will be displayed in the browser console                                      |
 | overwriteParams | array   | A list of options that should be overwritten with the profile option instead of being appended to              |
 | pitch           | float   | same as SpeechSynthesisUtterance.pitch                                                                         |
+| position        | string  | Placement of the player in browser, default is top-right (tr), possible options are tl, tc, tr, bl, bc, br     |
 | rate            | float   | same as SpeechSynthesisUtterance.rate                                                                          |
 | silence         | array   | list of JS selectors for elements that will be removed removed                                                 |
 | trigger         | array   | list of JS selectors for elements that should trigger TTTS to autoplay (e.g. story navigation)                 |

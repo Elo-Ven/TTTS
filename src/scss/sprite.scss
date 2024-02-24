@@ -1,31 +1,25 @@
 .ttts-sprite {
-    width: 32px;
-    height: 32px;
-    background-size: 100% 100%;
-    background-repeat: no-repeat;
+    width: 28px;
+    height: 28px;
 }
 
-.ttts-sprite-config {
+.ttts-config-sprite {
     @extend .ttts-sprite;
-    background-image: url('#{$img-dir}config.png');
 }
 
-.ttts-sprite-next {
+.ttts-next-sprite {
     @extend .ttts-sprite;
-    background-image: url('#{$img-dir}next.png');
 }
 
-.ttts-sprite-pause {
+.ttts-pause-sprite {
     @extend .ttts-sprite;
-    background-image: url('#{$img-dir}pause.png');
 }
 
-.ttts-sprite-prev {
-    @extend .ttts-sprite-next;
+.ttts-prev-sprite {
+    @extend .ttts-next-sprite;
     transform: scale(-1, -1);
 }
 
-.ttts-sprite-play {
+.ttts-play-sprite {
     @extend .ttts-sprite;
-    background-image: url('#{$img-dir}play.png');
 }

@@ -1,31 +1,3 @@
-# TTTS - Twine Text To Speech
-
-Version: 2.4.0 \
-Licence: MIT
-
-![Screenshot](docs/screenshots/1.png 'Screenshot')
-
--   [Summary](#summary)
--   [Demo](https://elo-ven.github.io/TTTS/)
--   [Docs](https://github.com/Elo-Ven/TTTS/tree/main/docs)
--   [Compatibility](#compatibility)
-
-# Summary
-
-If you are that sort of person that prefers listening to audiobooks over reading books, this mod will make Twine story games much more enjoyable for you.
-
-Your web browser already has text-to-speech tools built into it right now. Your Twine game just isn't using them. This mod adds a small control panel to the game that hooks into those tools, letting you play the game, just as before, but now with voice-overs.
-
-The mod is very simple to install and can also be added by anyone, developer or player.
-
-# Demo
-
-For working examples of a Twine Game with TTTS, see the [Demo](https://github.com/Elo-Ven/TTTS/tree/main/demo)
-
-# Docs
-
-For more information on how to install and use TTTS, see the [Docs](https://github.com/Elo-Ven/TTTS/tree/main/docs) section
-
 # Compatibility
 
 ## System
@@ -65,8 +37,3 @@ Unknown - other
 ⭐⭐⭐ Has some issues but worth trying \
 ⭐⭐⭐⭐ Not perfect but still works really well \
 ⭐⭐⭐⭐⭐Works great
-
-# Thank You For Reading
-
-"**It doesn't stop being magic just because you know how it works.**"\
-_Terry Pratchett / The Wee Free Men_

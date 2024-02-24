@@ -39,33 +39,30 @@
 
     #ttts-play {
         @extend .ttts-player-button;
-        &:after {
-            @extend .ttts-sprite-play;
+        .ttts-play-sprite {
+            display: inline;
+        }
+        .ttts-pause-sprite {
+            display: none;
         }
         &.play {
-            &:after {
-                @extend .ttts-sprite-pause;
+            .ttts-play-sprite {
+                display: none;
+            }
+            .ttts-pause-sprite {
+                display: inline;
             }
         }
     }
 
     #ttts-config {
         @extend .ttts-player-button;
-        &:after {
-            @extend .ttts-sprite-config;
-        }
     }
     #ttts-next {
         @extend .ttts-player-button;
-        &:after {
-            @extend .ttts-sprite-next;
-        }
     }
     #ttts-prev {
         @extend .ttts-player-button;
-        &:after {
-            @extend .ttts-sprite-prev;
-        }
     }
 
     &.ttts-player-tl {

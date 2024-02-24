@@ -1,0 +1,19 @@
+:: StoryInit
+{
+	<script>
+	if (typeof ttts == "undefined") {
+		var tttsProfile = {};
+
+        INSERT_TTTS_CORE_HERE
+
+        if ('speechSynthesis' in window) {
+			//wait for the page to load and move to the end of the render queue before init
+			const ttts = new TwineTextToSpeech();
+			ttts.init();
+		} else {
+			const ttts = true;
+			console.log('TTTS | Failed to load, speechSynthesis is not available in your browser');
+		}
+	}
+	</script>
+}
